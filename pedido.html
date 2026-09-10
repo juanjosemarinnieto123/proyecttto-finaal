@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hacer pedido - Magic Cookies</title>
+  <link rel="icon" href="img/logo.svg">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/paginas.css">
+</head>
+
+<body>
+
+  <header class="barra">
+    <div class="contenido">
+      <a class="barra-logo" href="index.html">
+        <img src="img/logo.svg" alt="Logo de Magic Cookies" width="46" height="46">
+        <span>
+          <span class="barra-nombre">Magic Cookies</span>
+          <span class="barra-lema">Galletas con magia</span>
+        </span>
+      </a>
+
+      <button class="boton-menu" onclick="abrirMenu()">&#9776;</button>
+
+      <nav class="menu cerrado" id="menu">
+        <a href="index.html">Inicio</a>
+        <a href="catalogo.html">Catálogo</a>
+        <!-- Personalizacion en pausa: <a href="personalizacion.html">Personaliza</a> -->
+        <a class="activo" href="pedido.html">Pedido</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+
+      <a class="boton-carrito" href="carrito.html">
+        <span>&#128722;</span>
+        <span>Carrito</span>
+        <span class="contador" id="contador-carrito">0</span>
+      </a>
+    </div>
+  </header>
+
+  <section class="encabezado">
+    <div class="contenido">
+      <p class="migas"><a href="index.html">Inicio</a> / <a href="carrito.html">Carrito</a> / Pedido</p>
+      <span class="antetitulo">Último paso</span>
+      <h1 class="titulo">Datos y entrega</h1>
+      <p>
+        Solo pedimos lo necesario para encontrarte en el colegio. Nada de documentos, ni
+        direcciones de casa, ni datos de tarjetas.
+      </p>
+    </div>
+  </section>
+
+  <section class="seccion oculto" id="pedido-vacio">
+    <div class="contenido">
+      <div class="caja">
+        <div class="vacio">
+          <h2>Aún no hay nada para pedir</h2>
+          <p>
+            Primero escoge tus galletas en el catálogo.
+            Cuando tengas algo en el carrito, vuelve a esta página.
+          </p>
+          <a class="boton boton-naranja" href="catalogo.html">Ver el catálogo</a>
+          <!-- Personalizacion en pausa:
+          <a class="boton boton-morado" href="personalizacion.html">Crear mi galleta</a>
+          -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion" id="pedido-formulario">
+    <div class="contenido dos-columnas">
+
+      <form class="caja" id="formulario-pedido" novalidate>
+
+        <fieldset class="grupo">
+          <legend>Tus datos</legend>
+
+          <div class="fila-campos">
+            <div class="campo">
+              <label for="nombre">Nombre completo</label>
+              <input type="text" id="nombre" maxlength="60" >
+              <span class="error" id="error-nombre"></span>
+            </div>
+
+            <div class="campo">
+              <label for="curso">Curso</label>
+              <input type="text" id="curso" maxlength="6" >
+              <span class="error" id="error-curso"></span>
+            </div>
+
+            <div class="campo">
+              <label for="celular">Celular (opcional)</label>
+              <input type="tel" id="celular" maxlength="10" >
+              <span class="ayuda">Solo lo usamos para avisarte que ya vamos en camino.</span>
+              <span class="error" id="error-celular"></span>
+            </div>
+
+            <div class="campo">
+              <label for="curso">Jornada</label>
+              <input type="text" id="curso" maxlength="6" >
+              <span class="error" id="error-curso"></span>
+            </div>
+
+          </div>
+        </fieldset>
+
+        <fieldset class="grupo">
+          <legend>¿Dónde te las entregamos?</legend>
+
+          <div class="fila-campos">
+            <div class="campo">
+              <label for="nombre">Especifica</label>
+              <input type="text" id="nombre" maxlength="60" placeholder="Cafeteria, Canchas, Plaza de banderas, Salon, Etc.">
+              <span class="error" id="error-nombre"></span>
+            </div>
+
+          </div>
+        </fieldset>
+
+        <!--fieldset class="grupo">
+          <legend>¿Dónde te lo entregamos?</legend>
+
+          <div class="lugares">
+            <label class="lugar">
+              <input type="radio" name="lugar" data-nombre="Cafetería">
+              <b>Cafetería</b>
+              <small>Mesa 3, al lado de la caja</small>
+            </label>
+
+            <label class="lugar">
+              <input type="radio" name="lugar" data-nombre="Tu salón">
+              <b>Tu salón</b>
+              <small>Te la llevamos al puesto</small>
+            </label>
+
+            <label class="lugar">
+              <input type="radio" name="lugar" data-nombre="Biblioteca">
+              <b>Biblioteca</b>
+              <small>Entrada principal, primer piso</small>
+            </label>
+
+            <label class="lugar">
+              <input type="radio" name="lugar" data-nombre="Canchas">
+              <b>Canchas</b>
+              <small>Junto a las gradas azules</small>
+            </label>
+
+            <label class="lugar">
+              <input type="radio" name="lugar" data-nombre="Portería">
+              <b>Portería</b>
+              <small>A la salida, sobre la calle 7</small>
+            </label>
+          </div>
+
+          <span class="error" id="error-lugar"></span>
+        </fieldset-->
+
+        <fieldset class="grupo">
+          <legend>¿A qué hora?</legend>
+
+          <div class="opciones">
+            <label class="opcion">
+              <input type="radio" name="momento" data-nombre="Entrada (6:30 a. m.)">
+              <span>Entrada</span>
+              <span class="costo">6:30 a. m.</span>
+            </label>
+
+            <label class="opcion">
+              <input type="radio" name="momento" data-nombre="Segundo descanso (12:00 m.)">
+              <span>Cambio De Clse</span>
+              <span class="costo">7:30 a. m.</span>
+            </label>
+
+            <label class="opcion">
+              <input type="radio" name="momento" data-nombre="A la salida (3:10 p. m.)">
+              <span>Cambio De Clse</span>
+              <span class="costo">8:30 a. m.</span>
+            </label>
+
+            <label class="opcion">
+              <input type="radio" name="momento" data-nombre="A la salida (3:10 p. m.)">
+              <span>Cambio De Clse</span>
+              <span class="costo">9:20 a. m.</span>
+            </label>
+
+            <label class="opcion">
+              <input type="radio" name="momento" data-nombre="A la salida (3:10 p. m.)">
+              <span>Descanso</span>
+              <span class="costo">10:10 a. m.</span>
+            </label>
+
+            <label class="opcion">
+              <input type="radio" name="momento" data-nombre="A la salida (3:10 p. m.)">
+              <span>Cambio De Clse</span>
+              <span class="costo">11:30 a. m.</span>
+            </label>
+
+            <label class="opcion">
+              <input type="radio" name="momento" data-nombre="A la salida (3:10 p. m.)">
+              <span>Salida</span>
+              <span class="costo">12:20 p. m.</span>
+            </label>
+          </div> <br>
+
+        <fieldset class="grupo">
+          <div class="fila-campos">
+           <div class="campo">
+              <label for="nombre">Jornada Tarde</label>
+              <input type="text" id="nombre" maxlength="60" placeholder="A que hora o ha que cambio de clase">
+              <span class="error" id="error-nombre"></span>
+           </div>
+          </div>
+        </fieldset>
+
+          <span class="error" id="error-momento"></span>
+        </fieldset>
+
+        <fieldset class="grupo">
+          <legend>¿Cómo vas a pagar?</legend>
+
+          <div class="opciones">
+            <label class="opcion">
+              <input type="radio" name="pago" data-nombre="Efectivo al recibir">
+              <span>Efectivo</span>
+              <span class="costo">(Pago contra entrega)</span>
+            </label>
+
+            <label class="opcion">
+              <input type="radio" name="pago" data-nombre="Nequi / Daviplata">
+              <span>Nequi / Daviplata</span>
+              <span class="costo">Nos Especificas tu compra en el mensaje de pago</span>
+            </label>
+          </div>
+
+          <span class="error" id="error-pago"></span>
+        </fieldset>
+
+        <fieldset class="grupo">
+          <legend>Indicaciones</legend>
+
+          <div class="campo">
+            <label for="notas">Algo que debamos saber (opcional)</label>
+            <textarea id="notas" maxlength="200"
+              placeholder="Haznos saber si eres alergic@ / Entregaselo a mi amig@ del curso (nos indicas el curso) llamad@ (Nos indicas el nombre) y demas informacion que debamos saber. "></textarea>
+            <span class="error" id="error-notas"></span>
+          </div>
+        </fieldset>
+
+        <button class="boton boton-naranja boton-ancho boton-grande" type="submit">Confirmar pedido</button>
+
+        <center><p class="texto-suave texto-chico" style="margin-top: 12px">
+          Al confirmar generamos un código de pedido. No se cobra nada en línea: pagas al
+          recibir o por Nequi o Daviplata
+        </center></p>
+      </form>
+
+      <aside>
+
+        <div class="recibo" id="resumen-pedido"></div>
+
+        <p class="nota">
+          <span>&#128274;</span>
+          <span>
+            Estos datos se guardan solo en tu navegador para armar el pedido.
+          </span>
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="seccion oculto" id="pedido-listo">
+    <div class="contenido">
+
+      <div class="confirmacion" id="confirmacion"></div>
+    </div>
+  </section>
+
+  <footer class="pie">
+    <div class="contenido pie-columnas">
+      <div>
+        <p class="pie-marca">
+          <img src="img/logo.svg" alt="" width="40" height="40">
+          Magic Cookies
+        </p>
+        <p>Galletas artesanales hechas por nosotros y personalizada por ti</p>
+        <p>Colegio Tecnico Distrital Paulo Freire &middot; Este proyecto es de grado <b>1104</b></p>
+      </div>
+
+      <div>
+        <h3>Páginas</h3>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <!-- Personalizacion en pausa: <li><a href="personalizacion.html">Personaliza</a></li> -->
+          <li><a href="carrito.html">Carrito</a></li>
+          <li><a href="pedido.html">Pedido</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Escríbenos</h3>
+        <ul>
+          <li><a href="mailto:magiccookies11hjjs@gmail.com">magiccookies11hjjs@gmail.com</a></li>
+          <li><a href="https://wa.me/57
+           target="_blank">WhatsApp +57 313 3784021</a></li>
+          <li>Instagram @magic_cookies_11</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="pie-legal">
+      &copy; 2026 Magic Cookies &middot; Proyecto escolar &middot;
+      Tus datos solo se guardan en este navegador.
+    </p>
+  </footer>
+
+  <script src="js/comun.js"></script>
+  <script src="js/pedido.js"></script>
+</body>
+
+</html>

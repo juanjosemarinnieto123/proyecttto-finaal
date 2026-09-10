@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personaliza tu galleta - Magic Cookies</title>
+  <link rel="icon" href="img/logo.svg">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/paginas.css">
+</head>
+
+<body>
+
+  <header class="barra">
+    <div class="contenido">
+      <a class="barra-logo" href="index.html">
+        <img src="img/logo.svg" alt="Logo de Magic Cookies" width="46" height="46">
+        <span>
+          <span class="barra-nombre">Magic Cookies</span>
+          <span class="barra-lema">Galletas con magia</span>
+        </span>
+      </a>
+
+      <button class="boton-menu" onclick="abrirMenu()">&#9776;</button>
+
+      <nav class="menu cerrado" id="menu">
+        <a href="index.html">Inicio</a>
+        <a href="catalogo.html">Catálogo</a>
+        <!-- Personalizacion en pausa: <a class="activo" href="personalizacion.html">Personaliza</a> -->
+        <a href="pedido.html">Pedido</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+
+      <a class="boton-carrito" href="carrito.html">
+        <span>&#128722;</span>
+        <span>Carrito</span>
+        <span class="contador" id="contador-carrito">0</span>
+      </a>
+    </div>
+  </header>
+
+  <section class="encabezado">
+    <div class="contenido">
+      <p class="migas"><a href="index.html">Inicio</a> / Personalización</p>
+      <span class="antetitulo">Hazla a tu manera</span>
+      <h1 class="titulo titulo-morado">Personaliza tu galleta</h1>
+      <p>
+        Ve escogiendo y mira el dibujo de la derecha: así queda tu galleta. El precio se
+        calcula solo cada vez que cambias algo.
+      </p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenido dos-columnas">
+
+      <form class="caja" id="formulario-galleta">
+
+        <fieldset class="bloque">
+          <h3>1. Sabor de la masa <small>escoge uno</small></h3>
+          <div class="opciones">
+            <label class="opcion">
+              <input type="radio" name="sabor" value="chispas-chocolate" data-nombre="Chispas de chocolate"
+                data-precio="3500" checked>
+              <span class="color-sabor" style="background:#e0a75f"></span>
+              <span>Chispas de chocolate</span>
+            </label>
+            <label class="opcion">
+              <input type="radio" name="sabor" value="doble-chocolate" data-nombre="Doble chocolate" data-precio="4200">
+              <span class="color-sabor" style="background:#6f4530"></span>
+              <span>Doble chocolate</span>
+            </label>
+            <label class="opcion">
+              <input type="radio" name="sabor" value="red-velvet" data-nombre="Red velvet" data-precio="4500">
+              <span class="color-sabor" style="background:#b8433f"></span>
+              <span>Red velvet</span>
+            </label>
+            <label class="opcion">
+              <input type="radio" name="sabor" value="vainilla-confeti" data-nombre="Vainilla confeti"
+                data-precio="4000">
+              <span class="color-sabor" style="background:#f2dcae"></span>
+              <span>Vainilla confeti</span>
+            </label>
+            <label class="opcion">
+              <input type="radio" name="sabor" value="avena-canela" data-nombre="Avena y canela" data-precio="3200">
+              <span class="color-sabor" style="background:#cf9f6b"></span>
+              <span>Avena y canela</span>
+            </label>
+            <label class="opcion">
+              <input type="radio" name="sabor" value="limon" data-nombre="Limón" data-precio="4300">
+              <span class="color-sabor" style="background:#ecd884"></span>
+              <span>Limón</span>
+            </label>
+            <label class="opcion">
+              <input type="radio" name="sabor" value="mantequilla-mani" data-nombre="Mantequilla de maní"
+                data-precio="4100">
+              <span class="color-sabor" style="background:#d8a25c"></span>
+              <span>Mantequilla de maní</span>
+            </label>
+            <label class="opcion">
+              <input type="radio" name="sabor" value="brownie-nuez" data-nombre="Brownie de nuez" data-precio="4800">
+              <span class="color-sabor" style="background:#5d3a2a"></span>
+              <span>Brownie de nuez</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="bloque">
+          <h3>2. Tamaño <small>cambia el precio</small></h3>
+          <div class="opciones">
+            <label class="opcion">
+              <input type="radio" name="tamano" value="mini" data-nombre="Mini" data-factor="0.7">
+              <span>Mini</span>
+              <span class="costo">6 cm</span>
+            </label>
+            <label class="opcion">
+              <input type="radio" name="tamano" value="clasica" data-nombre="Clásica" data-factor="1" checked>
+              <span>Clásica</span>
+              <span class="costo">9 cm</span>
+            </label>
+            <label class="opcion">
+              <input type="radio" name="tamano" value="gigante" data-nombre="Gigante" data-factor="1.6">
+              <span>Gigante</span>
+              <span class="costo">13 cm, para compartir</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="bloque">
+          <h3>3. Decoración <small>lo que va encima</small></h3>
+          <div class="opciones">
+            <label class="opcion">
+              <input type="radio" name="decoracion" value="ninguna" data-nombre="Sin decoración" data-precio="0"
+                checked>
+              <span>Sin decoración</span>
+            </label>
+            <label class="opcion">
+              <input type="radio" name="decoracion" value="glaseado" data-nombre="Glaseado blanco" data-precio="600">
+              <span>Glaseado blanco</span>
+              <span class="costo">+ $600</span>
+            </label>
+            <label class="opcion">
+              <input type="radio" name="decoracion" value="grageas" data-nombre="Grageas de colores" data-precio="700">
+              <span>Grageas de colores</span>
+              <span class="costo">+ $700</span>
+            </label>
+            <label class="opcion">
+              <input type="radio" name="decoracion" value="corazon" data-nombre="Corazón de fresa" data-precio="900">
+              <span>Corazón de fresa</span>
+              <span class="costo">+ $900</span>
+            </label>
+            <label class="opcion">
+              <input type="radio" name="decoracion" value="estrellas" data-nombre="Estrellas mágicas" data-precio="900">
+              <span>Estrellas mágicas</span>
+              <span class="costo">+ $900</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="bloque">
+          <h3>4. Extras <small>puedes escoger varios</small></h3>
+          <div class="opciones">
+            <label class="opcion">
+              <input type="checkbox" name="extra" value="mensaje" data-nombre="Mensaje escrito" data-precio="900">
+              <span>Mensaje escrito</span>
+              <span class="costo">+ $900</span>
+            </label>
+            <label class="opcion">
+              <input type="checkbox" name="extra" value="doble-chispas" data-nombre="Doble chispas" data-precio="700">
+              <span>Doble chispas</span>
+              <span class="costo">+ $700</span>
+            </label>
+            <label class="opcion">
+              <input type="checkbox" name="extra" value="regalo" data-nombre="Empaque de regalo" data-precio="1200">
+              <span>Empaque de regalo</span>
+              <span class="costo">+ $1.200</span>
+            </label>
+            <label class="opcion">
+              <input type="checkbox" name="extra" value="tarjeta" data-nombre="Tarjeta con dedicatoria"
+                data-precio="800">
+              <span>Tarjeta con dedicatoria</span>
+              <span class="costo">+ $800</span>
+            </label>
+          </div>
+
+          <div class="campo oculto" id="caja-mensaje" style="margin-top: 16px">
+            <label for="mensaje">Mensaje sobre la galleta</label>
+            <input type="text" id="mensaje" maxlength="25" placeholder="Ej: Feliz cumple Sofi">
+            <span class="ayuda">
+              Cabe una frase corta (<span id="contador-letras">0/25</span>).
+              La escribimos a mano con glaseado blanco.
+            </span>
+          </div>
+        </fieldset>
+
+        <div class="bloque">
+          <h3>5. Cantidad</h3>
+          <div class="contador-caja">
+            <button class="boton boton-chico" type="button" onclick="bajarCantidad()">-</button>
+            <span id="cantidad">1</span>
+            <button class="boton boton-chico" type="button" onclick="subirCantidad()">+</button>
+          </div>
+        </div>
+      </form>
+
+      <aside class="vista-previa">
+        <div class="caja">
+
+          <div class="vista-previa-dibujo" id="vista-previa"></div>
+
+          <p class="texto-suave texto-chico" id="resumen"></p>
+
+          <div class="linea-recibo" style="margin-top: 12px">
+            <span>Precio por galleta</span>
+            <span class="puntos"></span>
+            <b id="precio-unidad">$ 0</b>
+          </div>
+
+          <div class="total">
+            <span>Total</span>
+            <span id="precio-total">$ 0</span>
+          </div>
+
+          <button class="boton boton-naranja boton-ancho boton-grande" type="button" onclick="agregarPersonalizada()"
+            style="margin-top: 18px">
+            Agregar al carrito
+          </button>
+
+          <p class="texto-suave texto-chico" style="margin-top: 12px">
+            Puedes agregar varias galletas distintas: el carrito las guarda por separado.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <footer class="pie">
+    <div class="contenido pie-columnas">
+      <div>
+        <p class="pie-marca">
+          <img src="img/logo.svg" alt="" width="40" height="40">
+          Magic Cookies
+        </p>
+        <p>Galletas artesanales hechas por nosotros y personalizada por ti</p>
+        <p>Colegio Tecnico Distrital Paulo Freire &middot; Este proyecto es de grado <b>1104</b></p>
+      </div>
+
+      <div>
+        <h3>Páginas</h3>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <!-- Personalizacion en pausa: <li><a href="personalizacion.html">Personaliza</a></li> -->
+          <li><a href="carrito.html">Carrito</a></li>
+          <li><a href="pedido.html">Pedido</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Escríbenos</h3>
+        <ul>
+          <li><a href="mailto:magiccookies11hjjs@gmail.com">magiccookies11hjjs@gmail.com</a></li>
+          <li><a href="https://wa.me/3133784021" target="_blank">WhatsApp +57 313 3784021</a></li>
+          <li>Instagram @magic_cookies_11</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="pie-legal">
+      &copy; 2026 Magic Cookies &middot; Proyecto escolar &middot;
+      Tus datos solo se guardan en este navegador.
+    </p>
+  </footer>
+
+  <script src="js/comun.js"></script>
+  <script src="js/galletas.js"></script>
+  <script src="js/personalizacion.js"></script>
+</body>
+
+</html>

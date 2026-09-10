@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - Magic Cookies</title>
+  <link rel="icon" href="img/logo.svg">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/paginas.css">
+</head>
+
+<body>
+
+  <header class="barra">
+    <div class="contenido">
+      <a class="barra-logo" href="index.html">
+        <img src="img/logo.svg" alt="Logo de Magic Cookies" width="46" height="46">
+        <span>
+          <span class="barra-nombre">Magic Cookies</span>
+          <span class="barra-lema">Galletas con magia</span>
+        </span>
+      </a>
+
+      <button class="boton-menu" onclick="abrirMenu()">&#9776;</button>
+
+      <nav class="menu cerrado" id="menu">
+        <a href="index.html">Inicio</a>
+        <a href="catalogo.html">Catálogo</a>
+        <!-- Personalizacion en pausa: <a href="personalizacion.html">Personaliza</a> -->
+        <a href="pedido.html">Pedido</a>
+        <a class="activo" href="contacto.html">Contacto</a>
+      </nav>
+
+      <a class="boton-carrito" href="carrito.html">
+        <span>&#128722;</span>
+        <span>Carrito</span>
+        <span class="contador" id="contador-carrito">0</span>
+      </a>
+    </div>
+  </header>
+
+  <section class="encabezado">
+    <div class="contenido">
+      <p class="migas"><a href="index.html">Inicio</a> / Contacto</p>
+      <span class="antetitulo">Estamos pendientes</span>
+      <h1 class="titulo">Contacto</h1>
+      <p>
+        ¿Dudas con tu pedido, una alergia o una gran cantidad de galletas?
+        Escríbenos por donde te quede más fácil.
+      </p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenido dos-columnas">
+
+      <div>
+
+        <div class="dato-contacto">
+          <div class="icono">&#128172;</div>
+          <div>
+            <small>WhatsApp</small>
+            <b><a href="https://wa.me/3133784021" target="_blank">+57 313 3784021</a></b>
+            <p class="texto-suave texto-chico">Es la forma más rápida. Respondemos entre clases.</p>
+          </div>
+        </div>
+
+        <div class="dato-contacto">
+          <div class="icono">&#9993;</div>
+          <div>
+            <small>Correo</small>
+            <b><a href="mailto:magiccookies11hjjs@gmail.com">magiccookies11hjjs@gmail.com</a></b>
+            <p class="texto-suave texto-chico">Para pedidos grandes o alguna inquietud.</p>
+          </div>
+        </div>
+
+        <div class="dato-contacto">
+          <div class="icono">&#128205;</div>
+          <div>
+            <small>Dónde encontrarnos</small>
+            <b>Grado 11 Curso 1104</b>
+            <p class="texto-suave texto-chico">Este proyecto esta creado por un gurpo de este curso.</p>
+          </div>
+        </div>
+
+        <div class="caja-punteada" style="margin: 22px 0">
+          <h2 style="font-size: 1.3rem; margin-bottom: 12px">Horarios</h2>
+
+          <p class="horario"><span>Jornada Mañana</span><span class="puntos"></span><span>7:00 a. m. - 12:00 p. 
+              m.</span></p>
+          <p class="horario"><span>Jornada Tarde</span><span class="puntos"></span><span>1:00 p. m. - 6:00 p. 
+              m.</span></p>
+          <p class="horario"><span>Sábados, domingos, Festivos</span><span class="puntos"></span><span>Cerrado</span>
+          </p>
+        </div>
+
+        <h2 class="titulo" style="font-size: 1.6rem; margin: 26px 0 16px">Preguntas frecuentes</h2>
+
+        <div class="caja" style="padding: 0">
+          <div class="pregunta">
+            <button onclick="abrirPregunta(1)">
+              ¿Cuanto tiempo tengo que esperar?
+              <span id="signo-1">+</span>
+            </button>
+            <p class="oculto" id="respuesta-1">
+              Tienes que esperar de a 15 o 30 minutos por maximo
+            </p>
+          </div>
+
+          <div class="pregunta">
+            <button onclick="abrirPregunta(2)">
+              ¿Cómo se paga?
+              <span id="signo-2">+</span>
+            </button>
+            <p class="oculto" id="respuesta-2">
+              En efectivo cuando te entregamos el pedido, o por Nequi / Daviplata.
+              Nunca pedimos datos de tarjetas ni claves.
+            </p>
+          </div>
+
+          <div class="pregunta">
+            <button onclick="abrirPregunta(3)">
+              ¿Dónde me entregan las galletas?
+              <span id="signo-3">+</span>
+            </button>
+            <p class="oculto" id="respuesta-3">
+              Dentro del colegio: cafetería, tu salón, la biblioteca, las canchas o la portería.
+              ¡!Tú escoges el lugar!¡
+            </p>
+          </div>
+
+          <div class="pregunta">
+            <button onclick="abrirPregunta(4)">
+              Soy alérgico a algo, ¿qué hago?
+              <span id="signo-4">+</span>
+            </button>
+            <p class="oculto" id="respuesta-4">
+              Escríbelo en las indicaciones del pedido y si ya hiciste el pedido nos puedes escribir al numero de <b> WhatsApp </b> 
+            </p>
+          </div>
+
+          <div class="pregunta">
+            <button onclick="abrirPregunta(5)">
+              ¿Puedo cambiar o cancelar mi pedido?
+              <span id="signo-5">+</span>
+            </button>
+            <p class="oculto" id="respuesta-5">
+              Claro que si. Escríbenos por WhatsApp con tu código de pedido (Mi pedido-XXXX) antes de
+              la hora de entrega.
+            </p>
+          </div>
+
+          <div class="pregunta">
+            <button onclick="abrirPregunta(6)">
+              ¿Hacen pedidos grandes?
+              <span id="signo-6">+</span>
+            </button>
+            <p class="oculto" id="respuesta-6">
+              Claro. Si llevas 4 te daremos la quinta galleta totalmente gratis y si llevas mas de 10 galletas
+              se te hara un descuento de 500 pesos por galleta.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <form class="caja" id="formulario-contacto" novalidate>
+          <div class="caja-titulo">
+            <h2>Escríbenos</h2>
+          </div>
+
+          <div class="campo">
+            <label for="nombre">Tu nombre</label>
+            <input type="text" id="nombre" maxlength="60">
+            <span class="error" id="error-nombre"></span>
+          </div>
+
+          <div class="campo">
+            <label for="correo">Tu correo</label>
+            <input type="email" id="correo" maxlength="80" placeholder="nombre@gmail.com">
+            <span class="error" id="error-correo"></span>
+          </div>
+
+          <div class="campo">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" maxlength="400" placeholder="Cuéntanos en qué te podemos ayudar"></textarea>
+            <span class="error" id="error-mensaje"></span>
+          </div>
+
+          <button class="boton boton-naranja boton-ancho" type="submit">Preparar mensaje</button>
+
+          <p class="texto-suave texto-chico" style="margin-top: 12px">
+            Esta página no envía nada sola: revisamos lo que escribiste y tú decides si lo
+            mandas por WhatsApp o por correo.
+          </p>
+        </form>
+
+        <div class="oculto" id="salida" style="margin-top: 16px"></div>
+      </aside>
+    </div>
+  </section>
+
+  <footer class="pie">
+    <div class="contenido pie-columnas">
+      <div>
+        <p class="pie-marca">
+          <img src="img/logo.svg" alt="" width="40" height="40">
+          Magic Cookies
+        </p>
+        <p>Galletas artesanales hechas por nosotros y personalizada por ti</p>
+        <p>Colegio Tecnico Distrital Paulo Freire &middot; Este proyecto es de grado <b>1104</b></p>
+      </div>
+
+      <div>
+        <h3>Páginas</h3>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <!-- Personalizacion en pausa: <li><a href="personalizacion.html">Personaliza</a></li> -->
+          <li><a href="carrito.html">Carrito</a></li>
+          <li><a href="pedido.html">Pedido</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Escríbenos</h3>
+        <ul>
+          <li><a href="mailto:magiccookies11hjjs@gmail.com">magiccookies11hjjs@gmail.com</a></li>
+          <li><a href="https://wa.me/3133784021" target="_blank">WhatsApp +57 313 3784021</a></li>
+          <li>Instagram @magic_cookies_11</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="pie-legal">
+      &copy; 2026 Magic Cookies &middot; Proyecto escolar &middot;
+      Tus datos solo se guardan en este navegador.
+    </p>
+  </footer>
+
+  <script src="js/comun.js"></script>
+  <script src="js/contacto.js"></script>
+</body>
+
+</html>

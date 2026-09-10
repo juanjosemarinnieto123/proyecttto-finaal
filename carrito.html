@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito - Magic Cookies</title>
+  <link rel="icon" href="img/logo.svg">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/paginas.css">
+</head>
+
+<body>
+
+  <header class="barra">
+    <div class="contenido">
+      <a class="barra-logo" href="index.html">
+        <img src="img/logo.svg" alt="Logo de Magic Cookies" width="46" height="46">
+        <span>
+          <span class="barra-nombre">Magic Cookies</span>
+          <span class="barra-lema">Galletas con magia</span>
+        </span>
+      </a>
+
+      <button class="boton-menu" onclick="abrirMenu()">&#9776;</button>
+
+      <nav class="menu cerrado" id="menu">
+        <a href="index.html">Inicio</a>
+        <a href="catalogo.html">Catálogo</a>
+        <!-- Personalizacion en pausa: <a href="personalizacion.html">Personaliza</a> -->
+        <a href="pedido.html">Pedido</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+
+      <a class="boton-carrito" href="carrito.html">
+        <span>&#128722;</span>
+        <span>Carrito</span>
+        <span class="contador" id="contador-carrito">0</span>
+      </a>
+    </div>
+  </header>
+
+  <section class="encabezado">
+    <div class="contenido">
+      <p class="migas"><a href="index.html">Inicio</a> / Carrito</p>
+      <span class="antetitulo">Antes de pedir</span>
+      <h1 class="titulo">Tu carrito</h1>
+      <p>
+        Aquí ves todos los productos que escogiste, puedes cambiar las cantidades y revisar el total.
+        ¡!Pide todas las que quieras!¡
+      </p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenido dos-columnas">
+
+      <div class="caja">
+        <div class="caja-titulo">
+          <h2>Galletas escogidas</h2>
+          <span class="etiqueta" id="cuantas"></span>
+        </div>
+
+        <div id="lista-carrito"></div>
+
+        <div class="acciones-carrito" id="acciones">
+          <a class="boton" href="catalogo.html">&#8592; Seguir escogiendo</a>
+          <button class="boton boton-rojo" onclick="vaciar()">Vaciar carrito</button>
+        </div>
+      </div>
+
+      <aside>
+
+        <div class="recibo" id="resumen"></div>
+
+        <a class="boton boton-naranja boton-ancho boton-grande" id="boton-pedido" href="pedido.html"
+          style="margin-top: 16px">
+          Continuar con el pedido
+        </a>
+
+        <p class="nota">
+          <span>&#127850;</span>
+          <span> Si llevas 4 galletas se aplicara la promocion de <b>4x5</b> : Pagaras 4 te llevaras 5</span>
+        </p>
+
+        <p class="nota">
+          <span>&#128190;</span>
+          <span>El carrito se guarda solo en este navegador. Si entras desde otro navegador. <b>El carrito estara vacio.</b></span>
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <footer class="pie">
+    <div class="contenido pie-columnas">
+      <div>
+        <p class="pie-marca">
+          <img src="img/logo.svg" alt="" width="40" height="40">
+          Magic Cookies
+        </p>
+        <p>Galletas artesanales hechas por nosotros y personalizada por ti</p>
+        <p>Colegio Tecnico Distrital Paulo Freire &middot; Este proyecto es de grado <b>1104</b></p>
+      </div>
+
+      <div>
+        <h3>Páginas</h3>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <!-- Personalizacion en pausa: <li><a href="personalizacion.html">Personaliza</a></li> -->
+          <li><a href="carrito.html">Carrito</a></li>
+          <li><a href="pedido.html">Pedido</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Escríbenos</h3>
+        <ul>
+          <li><a href="mailto:magiccookies11hjjs@gmail.com">magiccookies11hjjs@gmail.com</a></li>
+          <li><a href="https://wa.me/573133784021" target="_blank">WhatsApp +57 313 3784021</a></li>
+          <li>Instagram @magic_cookies_11</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="pie-legal">
+      &copy; 2026 Magic Cookies &middot; Proyecto escolar &middot;
+      Tus datos solo se guardan en este navegador.
+    </p>
+  </footer>
+
+  <script src="js/comun.js"></script>
+  <script src="js/galletas.js"></script>
+  <script src="js/carrito.js"></script>
+</body>
+
+</html>

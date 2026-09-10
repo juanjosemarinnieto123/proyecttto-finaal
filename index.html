@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magic Cookies - Galletas con magia</title>
+  <link rel="icon" href="img/logo.svg">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/paginas.css">
+</head>
+
+<body>
+
+  <header class="barra">
+    <div class="contenido">
+      <a class="barra-logo" href="index.html">
+        <img src="img/logo.svg" alt="Logo de Magic Cookies" width="46" height="46">
+        <span>
+          <span class="barra-nombre">Magic Cookies</span>
+          <span class="barra-lema">Galletas con magia</span>
+        </span>
+      </a>
+
+      <button class="boton-menu" onclick="abrirMenu()">&#9776;</button>
+
+      <nav class="menu cerrado" id="menu">
+        <a class="activo" href="index.html">Inicio</a>
+        <a href="catalogo.html">Catálogo</a>
+         <a href="personalizacion.html">Personaliza</a> 
+        <a href="pedido.html">Pedido</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+
+      <a class="boton-carrito" href="carrito.html">
+        <span>&#128722;</span>
+        <span>Carrito</span>
+        <span class="contador" id="contador-carrito">0</span>
+      </a>
+    </div>
+  </header>
+
+  <section class="portada">
+    <div class="contenido">
+      <div>
+        <span class="antetitulo">Recién horneadas con nuestra magia</span>
+
+        <h1>Magic <span>Cookies</span></h1>
+
+        <p class="texto-guia">
+          Somos un proyecto de estudiantes que hace tu galleta a tu gusto,
+          con sabores que escoges tú y con todos los topincs que desees, 
+          tu galleta llegara a cualquier lado del colegion Paulo Freire.
+        </p>
+
+        <div class="portada-botones">
+          <a class="boton boton-naranja boton-grande" href="catalogo.html">Ver el catálogo</a>
+          <!-- Personalizacion en pausa:
+          <a class="boton boton-grande" href="personalizacion.html">Crear mi galleta</a>
+          -->
+        </div>
+
+        <div class="portada-datos">
+          <p><b>9</b><small>Tipos de Galletas</small></p>
+          <p><b>6</b><small>topincs</small></p>
+          <p><b>$2.000</b><small>Desde</small></p>
+          <p><b>4x5</b><small>paga 4 lleva 5</small></p>
+        </div>
+      </div>
+
+      <div class="portada-galletas">
+        <div class="galleta-grande" id="galleta-1"></div>
+        <div class="galleta-mediana" id="galleta-2"></div>
+        <div class="galleta-chica" id="galleta-3"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cinta-marco">
+    <div class="cinta">
+      <div>
+        <span>Magia &#10022; Galletas &#10022; Topincs &#10022;Hechas por nosotros
+          &#10022; Personaliza tu galleta &#10022;</span>
+        <span>Magia &#10022; Galletas &#10022; Topincs &#10022; Hechas por nosotros 
+          &#10022; Personaliza tu galleta &#10022;</span>
+        <span>Magia &#10022; Galletas &#10022; Topincs &#10022; Hechas por nosotros 
+          &#10022; Personaliza tu galleta &#10022;</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="seccion">
+    <div class="contenido">
+      <span class="antetitulo">Las más pedidas</span>
+      <h2 class="titulo">Nuestras favoritas</h2>
+      <p class="texto-guia">
+        Estas son nuestras 3 Galletas mas pedidas, en nuestro catalogo podras personalizarlas o crear la tuya 
+      </p>
+
+      <div class="rejilla-galletas" id="favoritas" style="margin-top: 26px"></div>
+
+      <p style="margin-top: 22px">
+        <a class="enlace-flecha" href="catalogo.html">Ver catalogo &#8594;</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="seccion">
+    <div class="contenido">
+      <span class="antetitulo">Así de fácil</span>
+      <h2 class="titulo">Cómo pedir tus galletas</h2>
+
+      <div class="pasos">
+        <article class="paso">
+          <b>1</b>
+          <h3>Escoge</h3>
+          <p>Mira el catálogo y agrega al carrito las galletas que quieras probar.</p>
+        </article>
+
+        <!-- Personalizacion en pausa (al reactivarla vuelve a numerar los pasos 3 y 4):
+        <article class="paso">
+          <b>2</b>
+          <h3>Personaliza</h3>
+          <p>Cambia el sabor, el tamaño, la decoración y hasta el mensaje que lleva encima.</p>
+        </article>
+        -->
+
+        <article class="paso">
+          <b>2</b>
+          <h3>Revisa</h3>
+          <p>Ve al carrito y mira que no se te olvide ninguna galleta o topinc.</p>
+        </article>
+
+        <article class="paso">
+          <b>3</b>
+          <h3>Recibe</h3>
+          <p>Haznos saber tu curso, jornada, nombre y con gusto te la llevaremos.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Personalizacion en pausa: seccion completa lista para reactivar
+  <section class="seccion">
+    <div class="contenido">
+      <div class="franja">
+        <div>
+          <span class="antetitulo">Personalización</span>
+          <h2 class="titulo titulo-morado">Arma la galleta que quieras</h2>
+
+          <p>
+            El personalizador te muestra en vivo cómo va quedando tu galleta mientras escoges.
+            El precio se actualiza solo, sin sorpresas al final.
+          </p>
+
+          <ul>
+            <li>8 sabores de masa, desde clásica hasta brownie de nuez.</li>
+            <li>Tres tamaños: mini, clásica y gigante para compartir.</li>
+            <li>Glaseado, grageas, corazón de fresa o estrellas.</li>
+            <li>Un mensaje corto escrito con glaseado (ideal para cumpleaños).</li>
+          </ul>
+
+          <a class="boton boton-morado boton-grande" href="personalizacion.html">Empezar a personalizar</a>
+        </div>
+
+        <div class="franja-dibujo" id="galleta-ejemplo"></div>
+      </div>
+    </div>
+  </section>
+  -->
+
+  <footer class="pie">
+    <div class="contenido pie-columnas">
+      <div>
+        <p class="pie-marca">
+          <img src="img/logo.svg" alt="" width="40" height="40">
+          Magic Cookies
+        </p>
+        <p>Galletas artesanales hechas por nosotros y personalizada por ti</p>
+        <p>Colegio Tecnico Distrital Paulo Freire &middot; Este proyecto es de grado <b>1104</b></p>
+      </div>
+
+      <div>
+        <h3>Páginas</h3>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <!-- Personalizacion en pausa: <li><a href="personalizacion.html">Personaliza</a></li> -->
+          <li><a href="carrito.html">Carrito</a></li>
+          <li><a href="pedido.html">Pedido</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Escríbenos</h3>
+        <ul>
+          <li><a href="mailto:magiccookies11hjjs@gmail.com">magiccookies11hjjs@gmail.com</a></li>
+          <li><a href="https://wa.me/3133784021" target="_blank">WhatsApp +57 313 3784021</a></li>
+          <li>Instagram @magic_cookies_11</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="pie-legal">
+      &copy; 2026 Magic Cookies &middot; Proyecto escolar &middot;
+      Tus datos solo se guardan en este navegador.
+    </p>
+  </footer>
+
+  <script src="js/comun.js"></script>
+  <script src="js/datos.js"></script>
+  <script src="js/galletas.js"></script>
+  <script src="js/inicio.js"></script>
+</body>
+
+</html>
