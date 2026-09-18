@@ -89,8 +89,10 @@ button {
   border: none;
 }
 
+/* Utilidad para esconder cosas. Lleva !important porque hay reglas de mas
+   abajo (.aviso, por ejemplo) que tambien ponen display y le ganarian. */
 .oculto {
-  display: none;
+  display: none !important;
 }
 
 .contenido {
@@ -363,6 +365,12 @@ button {
 .boton-ancho {
   display: block;
   width: 100%;
+}
+
+.boton-mini {
+  padding: 7px 16px;
+  box-shadow: none;
+  font-size: 0.82rem;
 }
 
 .boton-chico {

@@ -43,33 +43,15 @@ function actualizar() {
 
   const extras = document.querySelectorAll('input[name="extra"]:checked');
   let nombresExtras = '';
-  let pideMensaje = false;
 
   for (let i = 0; i < extras.length; i++) {
     nombresExtras = nombresExtras + ' · ' + extras[i].dataset.nombre;
-
-    if (extras[i].value === 'mensaje') {
-      pideMensaje = true;
-    }
   }
-
-  const cajaMensaje = document.getElementById('caja-mensaje');
-  const campoMensaje = document.getElementById('mensaje');
-
-  if (pideMensaje === true) {
-    cajaMensaje.classList.remove('oculto');
-  } else {
-    cajaMensaje.classList.add('oculto');
-    campoMensaje.value = '';
-  }
-
-  const mensaje = limpiarTexto(campoMensaje.value, 25);
-  document.getElementById('contador-letras').textContent = campoMensaje.value.length + '/25';
 
   const precio = calcularPrecio();
 
   document.getElementById('vista-previa').innerHTML =
-    dibujarGalleta(sabor.value, decoracion.value, tamano.value, mensaje);
+    dibujarGalleta(sabor.value, decoracion.value, tamano.value, '');
 
   document.getElementById('resumen').textContent =
     sabor.dataset.nombre + ' · ' + tamano.dataset.nombre + ' · ' + decoracion.dataset.nombre + nombresExtras;
@@ -132,27 +114,18 @@ function agregarPersonalizada() {
   const sabor = opcionMarcada('sabor');
   const tamano = opcionMarcada('tamano');
   const decoracion = opcionMarcada('decoracion');
-  const mensaje = limpiarTexto(document.getElementById('mensaje').value, 25);
-
-  const quiereMensaje = document.querySelector('input[value="mensaje"]').checked;
-
-  if (quiereMensaje === true && mensaje === '') {
-    mostrarAviso('Escribe el mensaje que va sobre la galleta.', 'mal');
-    document.getElementById('mensaje').focus();
-    return;
-  }
 
   const precio = calcularPrecio();
   const detalle = document.getElementById('resumen').textContent;
 
   const galletaNueva = {
-    clave: sabor.value + '-' + tamano.value + '-' + decoracion.value + '-' + detalle + mensaje,
+    clave: sabor.value + '-' + tamano.value + '-' + decoracion.value + '-' + detalle,
     nombre: 'Galleta ' + sabor.dataset.nombre,
     detalle: detalle,
     sabor: sabor.value,
     decoracion: decoracion.value,
     tamano: tamano.value,
-    mensaje: mensaje,
+    mensaje: '',
     extras: extrasMarcados(),
     precio: precio,
     cantidad: cantidad,
@@ -233,8 +206,6 @@ function prepararEdicion() {
   marcarOpcion('tamano', pendiente.tamano);
   marcarOpcion('decoracion', pendiente.decoracion);
   marcarExtras(pendiente.extras);
-
-  document.getElementById('mensaje').value = limpiarTexto(pendiente.mensaje, 25);
 }
 
 function saborDeLaDireccion() {
@@ -254,8 +225,6 @@ const opciones = document.querySelectorAll('#formulario-galleta input');
 for (let i = 0; i < opciones.length; i++) {
   opciones[i].addEventListener('change', actualizar);
 }
-
-document.getElementById('mensaje').addEventListener('input', actualizar);
 
 prepararEdicion();
 saborDeLaDireccion();

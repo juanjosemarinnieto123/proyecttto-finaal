@@ -55,7 +55,7 @@
         <div>
           <p id="texto-edicion" style="margin: 0"></p>
           <p style="margin: 10px 0 0">
-            <button class="boton boton-chico" type="button" onclick="cancelarEdicion()">
+            <button class="boton boton-mini" type="button" onclick="cancelarEdicion()">
               Déjalas como estaban
             </button>
           </p>
@@ -174,11 +174,6 @@
           <h3>4. Extras <small>puedes escoger varios</small></h3>
           <div class="opciones">
             <label class="opcion">
-              <input type="checkbox" name="extra" value="mensaje" data-nombre="Mensaje escrito" data-precio="900">
-              <span>Mensaje escrito</span>
-              <span class="costo">+ $900</span>
-            </label>
-            <label class="opcion">
               <input type="checkbox" name="extra" value="doble-chispas" data-nombre="Doble chispas" data-precio="700">
               <span>Doble chispas</span>
               <span class="costo">+ $700</span>
@@ -194,15 +189,6 @@
               <span>Tarjeta con dedicatoria</span>
               <span class="costo">+ $800</span>
             </label>
-          </div>
-
-          <div class="campo oculto" id="caja-mensaje" style="margin-top: 16px">
-            <label for="mensaje">Mensaje sobre la galleta</label>
-            <input type="text" id="mensaje" maxlength="25" placeholder="Ej: Feliz cumple Sofi">
-            <span class="ayuda">
-              Cabe una frase corta (<span id="contador-letras">0/25</span>).
-              La escribimos a mano con glaseado blanco.
-            </span>
           </div>
         </fieldset>
 
