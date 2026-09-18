@@ -6,7 +6,7 @@ function mostrarCarrito() {
   if (carrito.length === 0) {
     lista.innerHTML =
       '<div class="vacio">' +
-      dibujarGalleta('avena-canela', 'ninguna', 'mini', '') +
+      dibujarGalleta('avena-canela', 'ninguna', 'mini') +
       '<h3>Todavía no hay galletas aquí</h3>' +
       '<p>Mira el catálogo y agrega las que quieras. El carrito se guarda en este navegador, ' +
       'así que puedes volver después.</p>' +
@@ -23,20 +23,14 @@ function mostrarCarrito() {
     for (let i = 0; i < carrito.length; i++) {
       const galleta = carrito[i];
 
-      let mensaje = '';
-      if (galleta.mensaje !== '') {
-        mensaje = '<p class="mensaje">Dice: "' + escapar(galleta.mensaje) + '"</p>';
-      }
-
       html +=
         '<div class="linea-carrito">' +
         '<div class="linea-carrito-dibujo">' +
-        dibujarGalleta(galleta.sabor, galleta.decoracion, galleta.tamano, galleta.mensaje) +
+        dibujarGalleta(galleta.sabor, galleta.decoracion, galleta.tamano) +
         '</div>' +
         '<div>' +
         '<h3>' + escapar(galleta.nombre) + '</h3>' +
         '<p class="detalle">' + escapar(galleta.detalle) + '</p>' +
-        mensaje +
         '<p class="detalle">' + formatearPrecio(galleta.precio) + ' cada una</p>' +
         '</div>' +
         '<div class="linea-carrito-derecha">' +
@@ -103,7 +97,6 @@ function personalizar(posicion) {
     sabor: galleta.sabor,
     tamano: galleta.tamano,
     decoracion: galleta.decoracion,
-    mensaje: galleta.mensaje,
     extras: galleta.extras,
   });
 

@@ -387,16 +387,6 @@
   font-size: 0.8rem;
 }
 
-.linea-carrito .mensaje {
-  margin-top: 6px;
-  padding: 4px 10px;
-  border-left: 3px solid var(--ciruela);
-  border-radius: 0 8px 8px 0;
-  background-color: var(--ciruela-claro);
-  font-size: 0.8rem;
-  font-style: italic;
-}
-
 .linea-carrito-derecha {
   display: grid;
   justify-items: end;

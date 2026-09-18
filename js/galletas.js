@@ -47,10 +47,9 @@ const ESTRELLAS = [
   [72, 78, 13], [128, 92, 10], [95, 130, 12], [130, 138, 9],
 ];
 
-function dibujarGalleta(sabor, decoracion, tamano, mensaje) {
+function dibujarGalleta(sabor, decoracion, tamano) {
   const color = COLORES[sabor] || COLORES['chispas-chocolate'];
   const escala = TAMANOS[tamano] || TAMANOS.clasica;
-  const texto = mensaje || '';
 
   let dibujo = '';
 
@@ -93,18 +92,6 @@ function dibujarGalleta(sabor, decoracion, tamano, mensaje) {
     }
   }
 
-  if (texto !== '') {
-    let letra = 260 / texto.length;
-    if (letra > 24) {
-      letra = 24;
-    }
-
-    dibujo +=
-      '<text x="100" y="' + (80 + letra / 3) + '" text-anchor="middle" font-family="Georgia, serif"' +
-      ' font-size="' + letra + '" font-weight="bold" fill="#fff6ea" stroke="' + NEGRO + '"' +
-      ' stroke-width="' + (letra / 10) + '" paint-order="stroke">' + escapar(texto) + '</text>';
-  }
-
   return (
     '<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">' +
     '<g transform="translate(100 100) scale(' + escala + ') translate(-100 -100)">' +
@@ -140,7 +127,7 @@ function crearTarjeta(galleta) {
     '<article class="tarjeta">' +
     sello +
     '<div class="tarjeta-dibujo">' +
-    dibujarGalleta(galleta.sabor, galleta.decoracion, 'clasica', '') +
+    dibujarGalleta(galleta.sabor, galleta.decoracion, 'clasica') +
     '</div>' +
     '<div class="tarjeta-texto">' +
     '<h3>' + galleta.nombre + '</h3>' +
@@ -171,7 +158,6 @@ function agregarGalleta(id) {
         sabor: galleta.sabor,
         decoracion: galleta.decoracion,
         tamano: 'clasica',
-        mensaje: '',
         extras: [],
         precio: galleta.precio,
         cantidad: 1,

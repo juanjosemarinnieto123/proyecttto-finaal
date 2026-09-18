@@ -51,7 +51,7 @@ function actualizar() {
   const precio = calcularPrecio();
 
   document.getElementById('vista-previa').innerHTML =
-    dibujarGalleta(sabor.value, decoracion.value, tamano.value, '');
+    dibujarGalleta(sabor.value, decoracion.value, tamano.value);
 
   document.getElementById('resumen').textContent =
     sabor.dataset.nombre + ' · ' + tamano.dataset.nombre + ' · ' + decoracion.dataset.nombre + nombresExtras;
@@ -125,7 +125,6 @@ function agregarPersonalizada() {
     sabor: sabor.value,
     decoracion: decoracion.value,
     tamano: tamano.value,
-    mensaje: '',
     extras: extrasMarcados(),
     precio: precio,
     cantidad: cantidad,
