@@ -27,7 +27,7 @@
       <nav class="menu cerrado" id="menu">
         <a href="index.html">Inicio</a>
         <a href="catalogo.html">Catálogo</a>
-        <!-- Personalizacion en pausa: <a class="activo" href="personalizacion.html">Personaliza</a> -->
+        <a class="activo" href="personalizacion.html">Personaliza</a>
         <a href="pedido.html">Pedido</a>
         <a href="contacto.html">Contacto</a>
       </nav>
@@ -49,6 +49,18 @@
         Ve escogiendo y mira el dibujo de la derecha: así queda tu galleta. El precio se
         calcula solo cada vez que cambias algo.
       </p>
+
+      <div class="aviso aviso-morado oculto" id="aviso-edicion" style="margin-top: 18px">
+        <span>&#9998;</span>
+        <div>
+          <p id="texto-edicion" style="margin: 0"></p>
+          <p style="margin: 10px 0 0">
+            <button class="boton boton-chico" type="button" onclick="cancelarEdicion()">
+              Déjalas como estaban
+            </button>
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -195,7 +207,7 @@
         </fieldset>
 
         <div class="bloque">
-          <h3>5. Cantidad</h3>
+          <h3 id="titulo-cantidad">5. Cantidad</h3>
           <div class="contador-caja">
             <button class="boton boton-chico" type="button" onclick="bajarCantidad()">-</button>
             <span id="cantidad">1</span>
@@ -222,8 +234,8 @@
             <span id="precio-total">$ 0</span>
           </div>
 
-          <button class="boton boton-naranja boton-ancho boton-grande" type="button" onclick="agregarPersonalizada()"
-            style="margin-top: 18px">
+          <button class="boton boton-naranja boton-ancho boton-grande" type="button" id="boton-agregar"
+            onclick="agregarPersonalizada()" style="margin-top: 18px">
             Agregar al carrito
           </button>
 
@@ -251,7 +263,7 @@
         <ul>
           <li><a href="index.html">Inicio</a></li>
           <li><a href="catalogo.html">Catálogo</a></li>
-          <!-- Personalizacion en pausa: <li><a href="personalizacion.html">Personaliza</a></li> -->
+          <li><a href="personalizacion.html">Personaliza</a></li>
           <li><a href="carrito.html">Carrito</a></li>
           <li><a href="pedido.html">Pedido</a></li>
           <li><a href="contacto.html">Contacto</a></li>

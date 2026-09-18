@@ -407,6 +407,17 @@
   font-size: 1.15rem;
 }
 
+.personalizar-linea {
+  color: var(--ciruela);
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.personalizar-linea:hover {
+  color: var(--caramelo-oscuro);
+}
+
 .quitar {
   color: var(--rojo);
   font-size: 0.8rem;

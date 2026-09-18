@@ -37,8 +37,7 @@ function mostrarGalletas() {
       '<div class="vacio">' +
       '<h3>No encontramos esa galleta</h3>' +
       '<p>Prueba con otra palabra o mira todas las categorías.</p>' +
-      // Personalizacion en pausa:
-      // '<a class="boton boton-morado" href="personalizacion.html">Crear mi galleta</a>' +
+      '<a class="boton boton-morado" href="personalizacion.html">Crear mi galleta</a>' +
       '</div>';
   } else {
     lista.classList.add('rejilla-galletas');

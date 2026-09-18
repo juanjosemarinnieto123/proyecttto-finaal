@@ -1,5 +1,6 @@
 const CLAVE_CARRITO = 'magic-cookies-carrito';
 const CLAVE_PEDIDOS = 'magic-cookies-pedidos';
+const CLAVE_PERSONALIZANDO = 'magic-cookies-personalizando';
 
 const GALLETAS_PARA_DESCUENTO = 12;
 const PORCENTAJE_DESCUENTO = 0.1;
@@ -85,7 +86,88 @@ function quitarDelCarrito(posicion) {
 
 function vaciarCarrito() {
   localStorage.removeItem(CLAVE_CARRITO);
+  borrarPersonalizacionPendiente();
   actualizarContador();
+}
+
+function buscarEnCarrito(clave) {
+  const carrito = leerCarrito();
+
+  for (let i = 0; i < carrito.length; i++) {
+    if (carrito[i].clave === clave) {
+      return carrito[i];
+    }
+  }
+
+  return null;
+}
+
+// Guarda cual galleta del carrito se va a personalizar, para que la pagina
+// de personalizacion sepa de donde viene el usuario.
+function guardarPersonalizacionPendiente(dato) {
+  try {
+    localStorage.setItem(CLAVE_PERSONALIZANDO, JSON.stringify(dato));
+    return true;
+  } catch (error) {
+    mostrarAviso('Tu navegador no deja guardar la personalizacion.', 'mal');
+    return false;
+  }
+}
+
+function leerPersonalizacionPendiente() {
+  try {
+    const guardado = localStorage.getItem(CLAVE_PERSONALIZANDO);
+
+    if (guardado === null) {
+      return null;
+    }
+
+    return JSON.parse(guardado);
+  } catch (error) {
+    return null;
+  }
+}
+
+function borrarPersonalizacionPendiente() {
+  localStorage.removeItem(CLAVE_PERSONALIZANDO);
+}
+
+// Saca `cuantas` unidades de la linea `clave` y mete la galleta personalizada
+// en su lugar. Las unidades que no se personalizan se quedan como estaban.
+// Devuelve cuantas alcanzo a separar de verdad.
+function separarYPersonalizar(clave, cuantas, galletaNueva) {
+  const carrito = leerCarrito();
+  let separadas = 0;
+
+  for (let i = 0; i < carrito.length; i++) {
+    if (carrito[i].clave === clave) {
+      separadas = Math.min(cuantas, carrito[i].cantidad);
+      carrito[i].cantidad = carrito[i].cantidad - separadas;
+
+      if (carrito[i].cantidad < 1) {
+        carrito.splice(i, 1);
+      }
+
+      break;
+    }
+  }
+
+  let repetida = false;
+
+  for (let i = 0; i < carrito.length; i++) {
+    if (carrito[i].clave === galletaNueva.clave) {
+      carrito[i].cantidad = carrito[i].cantidad + galletaNueva.cantidad;
+      repetida = true;
+      break;
+    }
+  }
+
+  if (repetida === false) {
+    carrito.push(galletaNueva);
+  }
+
+  guardarCarrito(carrito);
+  return separadas;
 }
 
 function contarGalletas() {

@@ -3,9 +3,8 @@
 // document.getElementById('galleta-2').innerHTML = dibujarGalleta('red-velvet', 'corazon', 'clasica', '');
 // document.getElementById('galleta-3').innerHTML = dibujarGalleta('vainilla-confeti', 'grageas', 'clasica', '');
 
-// Personalizacion en pausa: dibujo de ejemplo de la seccion
-// document.getElementById('galleta-ejemplo').innerHTML =
-//   dibujarGalleta('doble-chocolate', 'glaseado', 'gigante', 'Feliz cumple');
+document.getElementById('galleta-ejemplo').innerHTML =
+  dibujarGalleta('doble-chocolate', 'glaseado', 'gigante', 'Feliz cumple');
 
 let html = '';
 let cuantas = 0;

@@ -152,8 +152,7 @@ function crearTarjeta(galleta) {
     '</div>' +
     '<div class="tarjeta-botones">' +
     '<button class="boton boton-naranja" onclick="agregarGalleta(\'' + galleta.id + '\')">Agregar</button>' +
-    // Personalizacion en pausa:
-    // '<a class="boton" href="personalizacion.html?sabor=' + galleta.sabor + '">Personalizar</a>' +
+    '<a class="boton" href="personalizacion.html?sabor=' + galleta.sabor + '">Personalizar</a>' +
     '</div>' +
     '</div>' +
     '</article>'
@@ -173,6 +172,7 @@ function agregarGalleta(id) {
         decoracion: galleta.decoracion,
         tamano: 'clasica',
         mensaje: '',
+        extras: [],
         precio: galleta.precio,
         cantidad: 1,
       });
