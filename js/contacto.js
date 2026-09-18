@@ -1,4 +1,4 @@
-const WHATSAPP_CONTACTO = '3133784021';
+const WHATSAPP_CONTACTO = '573133784021';
 const CORREO = 'hola@magiccookies.co';
 
 function abrirPregunta(numero) {

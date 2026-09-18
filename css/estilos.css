@@ -184,6 +184,15 @@ button {
   height: 46px;
 }
 
+/* El comegalletas viene en JPG con fondo blanco: multiply lo funde con la barra */
+.barra-monstruo {
+  width: auto;
+  height: 54px;
+  margin: 2px 0;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
 .barra-nombre {
   display: block;
   font-family: var(--letra-titulo);

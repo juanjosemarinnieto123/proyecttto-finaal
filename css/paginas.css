@@ -1,9 +1,42 @@
 .portada {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   padding: 70px 0 55px;
   background-color: var(--papel);
 }
 
+/* El banner va de fondo, detras del texto, con dos capas borrosas (zoom blur) */
+.portada::before,
+.portada::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: -12%;
+  background-image: url('../img/banner-magic-cookies.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+}
+
+.portada::before {
+  opacity: 0.3;
+  filter: blur(9px);
+  transform: scale(1.02);
+  animation: zoom-blur 9s ease-in-out infinite;
+}
+
+.portada::after {
+  opacity: 0.16;
+  filter: blur(34px);
+  transform: scale(1.22);
+  animation: zoom-blur 9s ease-in-out infinite;
+  animation-delay: -4.5s;
+}
+
 .portada .contenido {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
@@ -51,6 +84,34 @@
   text-transform: uppercase;
 }
 
+.portada-monstruo {
+  display: grid;
+  place-items: center;
+  min-height: 380px;
+}
+
+.portada-monstruo img {
+  width: auto;
+  max-width: 100%;
+  height: 360px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  filter: drop-shadow(6px 8px 8px rgba(46, 29, 22, 0.22));
+}
+
+@keyframes zoom-blur {
+  50% {
+    transform: scale(1.18);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portada::before,
+  .portada::after {
+    animation: none;
+  }
+}
+
 .portada-galletas {
   position: relative;
   height: 380px;
@@ -94,14 +155,13 @@
 
 .cinta {
   overflow: hidden;
-  width: 110%;
-  margin: 0 0 0 -5%;
+  width: 100%;
+  margin: 0;
   padding: 10px 0;
   border-top: 2px solid var(--cacao);
   border-bottom: 2px solid var(--cacao);
   background-color: var(--cacao);
   color: var(--crema);
-  transform: rotate(-1.2deg);
 }
 
 .cinta div {
@@ -653,6 +713,14 @@
 
   .portada-galletas {
     height: 300px;
+  }
+
+  .portada-monstruo {
+    min-height: 0;
+  }
+
+  .portada-monstruo img {
+    height: 260px;
   }
 
   .galleta-grande {

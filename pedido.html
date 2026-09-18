@@ -15,7 +15,7 @@
   <header class="barra">
     <div class="contenido">
       <a class="barra-logo" href="index.html">
-        <img src="img/logo.svg" alt="Logo de Magic Cookies" width="46" height="46">
+        <img class="barra-monstruo" src="img/comegalletas.jpg" alt="Comegalletas de Magic Cookies" width="36" height="54">
         <span>
           <span class="barra-nombre">Magic Cookies</span>
           <span class="barra-lema">Galletas con magia</span>
@@ -99,9 +99,13 @@
             </div>
 
             <div class="campo">
-              <label for="curso">Jornada</label>
-              <input type="text" id="curso" maxlength="6" >
-              <span class="error" id="error-curso"></span>
+              <label for="jornada">Jornada</label>
+              <select id="jornada">
+                <option value="">Escoge tu jornada</option>
+                <option value="Mañana">Mañana</option>
+                <option value="Tarde">Tarde</option>
+              </select>
+              <span class="error" id="error-jornada"></span>
             </div>
 
           </div>
@@ -112,9 +116,9 @@
 
           <div class="fila-campos">
             <div class="campo">
-              <label for="nombre">Especifica</label>
-              <input type="text" id="nombre" maxlength="60" placeholder="Cafeteria, Canchas, Plaza de banderas, Salon, Etc.">
-              <span class="error" id="error-nombre"></span>
+              <label for="lugar">Especifica</label>
+              <input type="text" id="lugar" maxlength="60" placeholder="Cafeteria, Canchas, Plaza de banderas, Salon, Etc.">
+              <span class="error" id="error-lugar"></span>
             </div>
 
           </div>
@@ -169,51 +173,49 @@
             </label>
 
             <label class="opcion">
-              <input type="radio" name="momento" data-nombre="Segundo descanso (12:00 m.)">
+              <input type="radio" name="momento" data-nombre="Cambio de clase (7:30 a. m.)">
               <span>Cambio De Clse</span>
               <span class="costo">7:30 a. m.</span>
             </label>
 
             <label class="opcion">
-              <input type="radio" name="momento" data-nombre="A la salida (3:10 p. m.)">
+              <input type="radio" name="momento" data-nombre="Cambio de clase (8:30 a. m.)">
               <span>Cambio De Clse</span>
               <span class="costo">8:30 a. m.</span>
             </label>
 
             <label class="opcion">
-              <input type="radio" name="momento" data-nombre="A la salida (3:10 p. m.)">
+              <input type="radio" name="momento" data-nombre="Cambio de clase (9:20 a. m.)">
               <span>Cambio De Clse</span>
               <span class="costo">9:20 a. m.</span>
             </label>
 
             <label class="opcion">
-              <input type="radio" name="momento" data-nombre="A la salida (3:10 p. m.)">
+              <input type="radio" name="momento" data-nombre="Descanso (10:10 a. m.)">
               <span>Descanso</span>
               <span class="costo">10:10 a. m.</span>
             </label>
 
             <label class="opcion">
-              <input type="radio" name="momento" data-nombre="A la salida (3:10 p. m.)">
+              <input type="radio" name="momento" data-nombre="Cambio de clase (11:30 a. m.)">
               <span>Cambio De Clse</span>
               <span class="costo">11:30 a. m.</span>
             </label>
 
             <label class="opcion">
-              <input type="radio" name="momento" data-nombre="A la salida (3:10 p. m.)">
+              <input type="radio" name="momento" data-nombre="Salida (12:20 p. m.)">
               <span>Salida</span>
               <span class="costo">12:20 p. m.</span>
             </label>
-          </div> <br>
-
-        <fieldset class="grupo">
-          <div class="fila-campos">
-           <div class="campo">
-              <label for="nombre">Jornada Tarde</label>
-              <input type="text" id="nombre" maxlength="60" placeholder="A que hora o ha que cambio de clase">
-              <span class="error" id="error-nombre"></span>
-           </div>
           </div>
-        </fieldset>
+
+          <div class="fila-campos" style="margin-top: 14px">
+            <div class="campo">
+              <label for="hora-tarde">Si eres de la jornada tarde, dinos la hora</label>
+              <input type="text" id="hora-tarde" maxlength="60" placeholder="A que hora o ha que cambio de clase">
+              <span class="error" id="error-hora-tarde"></span>
+            </div>
+          </div>
 
           <span class="error" id="error-momento"></span>
         </fieldset>
@@ -305,8 +307,7 @@
         <h3>Escríbenos</h3>
         <ul>
           <li><a href="mailto:magiccookies11hjjs@gmail.com">magiccookies11hjjs@gmail.com</a></li>
-          <li><a href="https://wa.me/57
-           target="_blank">WhatsApp +57 313 3784021</a></li>
+          <li><a href="https://wa.me/573133784021" target="_blank">WhatsApp +57 313 3784021</a></li>
           <li>Instagram @magic_cookies_11</li>
         </ul>
       </div>
