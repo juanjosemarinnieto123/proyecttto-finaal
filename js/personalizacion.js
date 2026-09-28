@@ -19,10 +19,9 @@ function buscarProducto(id) {
   return null;
 }
 
-// Arma las opciones de galletas y topincs con lo que hay en el catalogo (datos.js),
-// asi si se agrega algo al catalogo aparece aqui solo.
+// Arma las opciones de topincs con lo que hay en el catalogo (datos.js),
+// asi si se agrega un topinc al catalogo aparece aqui solo.
 function crearOpciones() {
-  let galletas = '';
   let topincs = '';
 
   for (let i = 0; i < GALLETAS.length; i++) {
@@ -36,22 +35,18 @@ function crearOpciones() {
         '<span>' + producto.nombre + '</span>' +
         '<span class="costo">+ ' + formatearPrecio(producto.precio) + '</span>' +
         '</label>';
-    } else {
-      galletas +=
-        '<label class="opcion opcion-foto">' +
-        '<input type="radio" name="galleta" value="' + producto.id + '">' +
-        '<img src="' + producto.foto + '" alt="">' +
-        '<span>' + producto.nombre + '</span>' +
-        '<span class="costo">' + formatearPrecio(producto.precio) + '</span>' +
-        '</label>';
     }
   }
 
-  document.getElementById('opciones-galleta').innerHTML = galletas;
   document.getElementById('opciones-topinc').innerHTML = topincs;
 
-  // La primera galleta queda escogida para que siempre haya una
-  document.querySelector('input[name="galleta"]').checked = true;
+  document.getElementById('galleta-base').innerHTML =
+    dibujarGalleta(GALLETA_BASICA.sabor, GALLETA_BASICA.decoracion, 'clasica') +
+    '<div>' +
+    '<b>' + GALLETA_BASICA.nombre + '</b>' +
+    '<span class="texto-suave texto-chico">Recién horneada, lista para tus topincs · ' +
+    formatearPrecio(GALLETA_BASICA.precio) + '</span>' +
+    '</div>';
 }
 
 function marcados(nombreDelGrupo) {
@@ -66,7 +61,7 @@ function marcados(nombreDelGrupo) {
 }
 
 function calcularPrecio() {
-  const galleta = buscarProducto(opcionMarcada('galleta').value);
+  const galleta = GALLETA_BASICA;
   const topincs = marcados('topinc');
   const extras = document.querySelectorAll('input[name="extra"]:checked');
 
@@ -85,7 +80,7 @@ function calcularPrecio() {
 
 // Texto corto con lo que se escogio, ej: "Doble Chocolate · Topincs: Fresa, Cereal · Empaque de regalo"
 function textoResumen() {
-  const galleta = buscarProducto(opcionMarcada('galleta').value);
+  const galleta = GALLETA_BASICA;
   const topincs = marcados('topinc');
   const extras = document.querySelectorAll('input[name="extra"]:checked');
 
@@ -98,7 +93,7 @@ function textoResumen() {
     }
     texto = texto + ' · Topincs: ' + nombres.join(', ');
   } else {
-    texto = texto + ' · Sin topincs extra';
+    texto = texto + ' · Sin topincs';
   }
 
   for (let i = 0; i < extras.length; i++) {
@@ -109,7 +104,7 @@ function textoResumen() {
 }
 
 function actualizar() {
-  const galleta = buscarProducto(opcionMarcada('galleta').value);
+  const galleta = GALLETA_BASICA;
   const topincs = marcados('topinc');
   const precio = calcularPrecio();
 
@@ -120,7 +115,7 @@ function actualizar() {
   }
 
   document.getElementById('vista-previa').innerHTML =
-    '<img class="vista-previa-galleta" src="' + galleta.foto + '" alt="Galleta ' + galleta.nombre + '">' +
+    dibujarGalleta(galleta.sabor, galleta.decoracion, 'gigante') +
     '<div class="vista-previa-topincs">' + fotosTopincs + '</div>';
 
   document.getElementById('resumen').textContent = textoResumen();
@@ -180,13 +175,13 @@ function bajarCantidad() {
 }
 
 function agregarPersonalizada() {
-  const galleta = buscarProducto(opcionMarcada('galleta').value);
+  const galleta = GALLETA_BASICA;
   const topincs = marcados('topinc');
   const extras = marcados('extra');
 
   let nombre = galleta.nombre;
   if (topincs.length > 0 || extras.length > 0) {
-    nombre = galleta.nombre + ' personalizada';
+    nombre = 'Galleta personalizada';
   }
 
   const galletaNueva = {
@@ -194,7 +189,6 @@ function agregarPersonalizada() {
     nombre: nombre,
     detalle: textoResumen(),
     galleta: galleta.id,
-    foto: galleta.foto,
     sabor: galleta.sabor,
     decoracion: galleta.decoracion,
     tamano: 'clasica',
@@ -275,18 +269,8 @@ function prepararEdicion() {
   maximo = enCarrito.cantidad;
   cantidad = 1;
 
-  marcarOpcion('galleta', pendiente.galleta);
   marcarCasillas('topinc', pendiente.topincs);
   marcarCasillas('extra', pendiente.extras);
-}
-
-// Si venimos del catalogo con ?galleta=... dejamos esa galleta escogida
-function galletaDeLaDireccion() {
-  const direccion = window.location.search;
-
-  if (direccion.indexOf('galleta=') !== -1) {
-    marcarOpcion('galleta', direccion.split('galleta=')[1]);
-  }
 }
 
 crearOpciones();
@@ -296,6 +280,5 @@ for (let i = 0; i < opciones.length; i++) {
   opciones[i].addEventListener('change', actualizar);
 }
 
-galletaDeLaDireccion();
 prepararEdicion();
 actualizar();

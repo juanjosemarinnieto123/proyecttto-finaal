@@ -378,12 +378,35 @@
   background-color: var(--crema);
 }
 
-.vista-previa-galleta {
+.vista-previa-foto svg {
   display: block;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  object-position: center 85%;
+  width: 220px;
+  height: 220px;
+  margin: 24px auto 64px;
+  filter: drop-shadow(5px 7px 0 rgba(46, 29, 22, 0.15));
+}
+
+.galleta-base {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px 10px 10px;
+  border: 2px solid var(--cacao);
+  border-radius: 18px;
+  background-color: var(--caramelo-claro);
+  box-shadow: var(--sombra-chica);
+}
+
+.galleta-base svg {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+}
+
+.galleta-base div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .vista-previa-topincs {
@@ -403,17 +426,6 @@
   object-fit: cover;
   object-position: center bottom;
   box-shadow: var(--sombra-chica);
-}
-
-.franja-dibujo img {
-  display: block;
-  width: 100%;
-  max-width: 320px;
-  margin: 0 auto;
-  border-radius: 14px;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  object-position: center 85%;
 }
 
 .linea-carrito {

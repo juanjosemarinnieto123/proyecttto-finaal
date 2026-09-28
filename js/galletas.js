@@ -123,12 +123,6 @@ function crearTarjeta(galleta) {
     sello = '<span class="favorita">Favorita</span>';
   }
 
-  // Los topincs no se personalizan, solo se agregan
-  let botonPersonalizar = '<a class="boton" href="personalizacion.html?galleta=' + galleta.id + '">Personalizar</a>';
-  if (galleta.tipo === 'topinc') {
-    botonPersonalizar = '';
-  }
-
   // Si la galleta tiene foto real se muestra la foto; si no, el dibujo
   let imagen = '<div class="tarjeta-dibujo">' +
     dibujarGalleta(galleta.sabor, galleta.decoracion, 'clasica') +
@@ -153,7 +147,6 @@ function crearTarjeta(galleta) {
     '</div>' +
     '<div class="tarjeta-botones">' +
     '<button class="boton boton-naranja" onclick="agregarGalleta(\'' + galleta.id + '\')">Agregar</button>' +
-    botonPersonalizar +
     '</div>' +
     '</div>' +
     '</article>'

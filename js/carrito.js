@@ -28,10 +28,11 @@ function mostrarCarrito() {
         imagen = '<img src="' + escapar(galleta.foto) + '" alt="">';
       }
 
-      // Los topincs no se pueden personalizar
-      let botonPersonalizar = '<button class="personalizar-linea" onclick="personalizar(' + i + ')">Personalizar</button>';
-      if (galleta.tipo === 'topinc') {
-        botonPersonalizar = '';
+      // Solo la galleta basica del personalizador se puede volver a personalizar,
+      // las del catalogo ya vienen con sus topincs
+      let botonPersonalizar = '';
+      if (galleta.galleta === 'galleta-basica') {
+        botonPersonalizar = '<button class="personalizar-linea" onclick="personalizar(' + i + ')">Personalizar</button>';
       }
 
       html +=
@@ -110,8 +111,6 @@ function personalizar(posicion) {
     clave: galleta.clave,
     nombre: galleta.nombre,
     maximo: galleta.cantidad,
-    // Las lineas viejas no tienen "galleta", en ese caso la clave es el id del catalogo
-    galleta: galleta.galleta || galleta.clave,
     topincs: galleta.topincs,
     extras: galleta.extras,
   });

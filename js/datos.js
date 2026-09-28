@@ -114,3 +114,13 @@ const GALLETAS = [
     foto: 'img/topinc-cereal.jpg',
   },
 ];
+
+// La galleta que se usa en el personalizador. No sale en el catalogo,
+// es la base a la que el cliente le pone sus topincs.
+const GALLETA_BASICA = {
+  id: 'galleta-basica',
+  nombre: 'Galleta básica',
+  sabor: 'chispas-chocolate',
+  decoracion: 'ninguna',
+  precio: 3000,
+};
