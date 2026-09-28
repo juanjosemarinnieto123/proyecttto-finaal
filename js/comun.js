@@ -2,8 +2,8 @@ const CLAVE_CARRITO = 'magic-cookies-carrito';
 const CLAVE_PEDIDOS = 'magic-cookies-pedidos';
 const CLAVE_PERSONALIZANDO = 'magic-cookies-personalizando';
 
-const GALLETAS_PARA_DESCUENTO = 12;
-const PORCENTAJE_DESCUENTO = 0.1;
+// Promocion 4x5: si llevas 4 galletas o mas te regalamos una galleta
+const GALLETAS_PARA_REGALO = 4;
 
 function formatearPrecio(numero) {
   return '$ ' + Number(numero).toLocaleString('es-CO');
@@ -190,17 +190,21 @@ function calcularTotales() {
   }
 
   const cantidad = contarGalletas();
-  let descuento = 0;
 
-  if (cantidad >= GALLETAS_PARA_DESCUENTO) {
-    descuento = Math.round(subtotal * PORCENTAJE_DESCUENTO);
+  // Para la promocion solo cuentan las galletas, no los topincs
+  let soloGalletas = 0;
+  for (let i = 0; i < carrito.length; i++) {
+    if (carrito[i].tipo !== 'topinc') {
+      soloGalletas = soloGalletas + carrito[i].cantidad;
+    }
   }
 
   return {
     cantidad: cantidad,
+    soloGalletas: soloGalletas,
+    regalo: soloGalletas >= GALLETAS_PARA_REGALO,
     subtotal: subtotal,
-    descuento: descuento,
-    total: subtotal - descuento,
+    total: subtotal,
   };
 }
 

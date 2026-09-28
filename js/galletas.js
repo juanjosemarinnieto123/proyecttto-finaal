@@ -123,12 +123,26 @@ function crearTarjeta(galleta) {
     sello = '<span class="favorita">Favorita</span>';
   }
 
+  // Los topincs no se personalizan, solo se agregan
+  let botonPersonalizar = '<a class="boton" href="personalizacion.html?galleta=' + galleta.id + '">Personalizar</a>';
+  if (galleta.tipo === 'topinc') {
+    botonPersonalizar = '';
+  }
+
+  // Si la galleta tiene foto real se muestra la foto; si no, el dibujo
+  let imagen = '<div class="tarjeta-dibujo">' +
+    dibujarGalleta(galleta.sabor, galleta.decoracion, 'clasica') +
+    '</div>';
+  if (galleta.foto) {
+    imagen = '<div class="tarjeta-foto">' +
+      '<img src="' + galleta.foto + '" alt="Galleta ' + galleta.nombre + '" loading="lazy">' +
+      '</div>';
+  }
+
   return (
     '<article class="tarjeta">' +
     sello +
-    '<div class="tarjeta-dibujo">' +
-    dibujarGalleta(galleta.sabor, galleta.decoracion, 'clasica') +
-    '</div>' +
+    imagen +
     '<div class="tarjeta-texto">' +
     '<h3>' + galleta.nombre + '</h3>' +
     '<p>' + galleta.descripcion + '</p>' +
@@ -139,7 +153,7 @@ function crearTarjeta(galleta) {
     '</div>' +
     '<div class="tarjeta-botones">' +
     '<button class="boton boton-naranja" onclick="agregarGalleta(\'' + galleta.id + '\')">Agregar</button>' +
-    '<a class="boton" href="personalizacion.html?sabor=' + galleta.sabor + '">Personalizar</a>' +
+    botonPersonalizar +
     '</div>' +
     '</div>' +
     '</article>'
@@ -151,10 +165,18 @@ function agregarGalleta(id) {
     if (GALLETAS[i].id === id) {
       const galleta = GALLETAS[i];
 
+      let detalle = 'Tamaño clásico, tal como está en el catálogo';
+      if (galleta.tipo === 'topinc') {
+        detalle = 'Topinc para tu galleta';
+      }
+
       agregarAlCarrito({
         clave: galleta.id,
         nombre: galleta.nombre,
-        detalle: 'Tamaño clásico, tal como está en el catálogo',
+        tipo: galleta.tipo,
+        galleta: galleta.id,
+        foto: galleta.foto,
+        detalle: detalle,
         sabor: galleta.sabor,
         decoracion: galleta.decoracion,
         tamano: 'clasica',

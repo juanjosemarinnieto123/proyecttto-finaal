@@ -35,7 +35,7 @@ function mostrarGalletas() {
     lista.classList.remove('rejilla-galletas');
     lista.innerHTML =
       '<div class="vacio">' +
-      '<h3>No encontramos esa galleta</h3>' +
+      '<h3>No encontramos eso</h3>' +
       '<p>Prueba con otra palabra o mira todas las categorías.</p>' +
       '<a class="boton boton-morado" href="personalizacion.html">Crear mi galleta</a>' +
       '</div>';
@@ -44,7 +44,7 @@ function mostrarGalletas() {
     lista.innerHTML = html;
   }
 
-  document.getElementById('cuantas').textContent = encontradas + ' galletas en esta selección';
+  document.getElementById('cuantas').textContent = encontradas + ' productos en esta selección';
 }
 
 const filtros = document.querySelectorAll('input[name="categoria"]');

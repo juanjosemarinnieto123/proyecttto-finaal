@@ -46,8 +46,8 @@
       <span class="antetitulo">Hazla a tu manera</span>
       <h1 class="titulo titulo-morado">Personaliza tu galleta</h1>
       <p>
-        Ve escogiendo y mira el dibujo de la derecha: así queda tu galleta. El precio se
-        calcula solo cada vez que cambias algo.
+        Escoge una de nuestras galletas y ponle los topincs que quieras. En la vista previa ves
+        cómo va quedando y el precio se calcula solo cada vez que cambias algo.
       </p>
 
       <div class="aviso aviso-morado oculto" id="aviso-edicion" style="margin-top: 18px">
@@ -70,114 +70,18 @@
       <form class="caja" id="formulario-galleta">
 
         <fieldset class="bloque">
-          <h3>1. Sabor de la masa <small>escoge uno</small></h3>
-          <div class="opciones">
-            <label class="opcion">
-              <input type="radio" name="sabor" value="chispas-chocolate" data-nombre="Chispas de chocolate"
-                data-precio="3500" checked>
-              <span class="color-sabor" style="background:#e0a75f"></span>
-              <span>Chispas de chocolate</span>
-            </label>
-            <label class="opcion">
-              <input type="radio" name="sabor" value="doble-chocolate" data-nombre="Doble chocolate" data-precio="4200">
-              <span class="color-sabor" style="background:#6f4530"></span>
-              <span>Doble chocolate</span>
-            </label>
-            <label class="opcion">
-              <input type="radio" name="sabor" value="red-velvet" data-nombre="Red velvet" data-precio="4500">
-              <span class="color-sabor" style="background:#b8433f"></span>
-              <span>Red velvet</span>
-            </label>
-            <label class="opcion">
-              <input type="radio" name="sabor" value="vainilla-confeti" data-nombre="Vainilla confeti"
-                data-precio="4000">
-              <span class="color-sabor" style="background:#f2dcae"></span>
-              <span>Vainilla confeti</span>
-            </label>
-            <label class="opcion">
-              <input type="radio" name="sabor" value="avena-canela" data-nombre="Avena y canela" data-precio="3200">
-              <span class="color-sabor" style="background:#cf9f6b"></span>
-              <span>Avena y canela</span>
-            </label>
-            <label class="opcion">
-              <input type="radio" name="sabor" value="limon" data-nombre="Limón" data-precio="4300">
-              <span class="color-sabor" style="background:#ecd884"></span>
-              <span>Limón</span>
-            </label>
-            <label class="opcion">
-              <input type="radio" name="sabor" value="mantequilla-mani" data-nombre="Mantequilla de maní"
-                data-precio="4100">
-              <span class="color-sabor" style="background:#d8a25c"></span>
-              <span>Mantequilla de maní</span>
-            </label>
-            <label class="opcion">
-              <input type="radio" name="sabor" value="brownie-nuez" data-nombre="Brownie de nuez" data-precio="4800">
-              <span class="color-sabor" style="background:#5d3a2a"></span>
-              <span>Brownie de nuez</span>
-            </label>
-          </div>
+          <h3>1. Escoge tu galleta <small>escoge una</small></h3>
+          <div class="opciones opciones-foto" id="opciones-galleta"></div>
         </fieldset>
 
         <fieldset class="bloque">
-          <h3>2. Tamaño <small>cambia el precio</small></h3>
-          <div class="opciones">
-            <label class="opcion">
-              <input type="radio" name="tamano" value="mini" data-nombre="Mini" data-factor="0.7">
-              <span>Mini</span>
-              <span class="costo">6 cm</span>
-            </label>
-            <label class="opcion">
-              <input type="radio" name="tamano" value="clasica" data-nombre="Clásica" data-factor="1" checked>
-              <span>Clásica</span>
-              <span class="costo">9 cm</span>
-            </label>
-            <label class="opcion">
-              <input type="radio" name="tamano" value="gigante" data-nombre="Gigante" data-factor="1.6">
-              <span>Gigante</span>
-              <span class="costo">13 cm, para compartir</span>
-            </label>
-          </div>
+          <h3>2. Topincs <small>puedes escoger varios</small></h3>
+          <div class="opciones opciones-foto" id="opciones-topinc"></div>
         </fieldset>
 
         <fieldset class="bloque">
-          <h3>3. Decoración <small>lo que va encima</small></h3>
+          <h3>3. Extras <small>puedes escoger varios</small></h3>
           <div class="opciones">
-            <label class="opcion">
-              <input type="radio" name="decoracion" value="ninguna" data-nombre="Sin decoración" data-precio="0"
-                checked>
-              <span>Sin decoración</span>
-            </label>
-            <label class="opcion">
-              <input type="radio" name="decoracion" value="glaseado" data-nombre="Glaseado blanco" data-precio="600">
-              <span>Glaseado blanco</span>
-              <span class="costo">+ $600</span>
-            </label>
-            <label class="opcion">
-              <input type="radio" name="decoracion" value="grageas" data-nombre="Grageas de colores" data-precio="700">
-              <span>Grageas de colores</span>
-              <span class="costo">+ $700</span>
-            </label>
-            <label class="opcion">
-              <input type="radio" name="decoracion" value="corazon" data-nombre="Corazón de fresa" data-precio="900">
-              <span>Corazón de fresa</span>
-              <span class="costo">+ $900</span>
-            </label>
-            <label class="opcion">
-              <input type="radio" name="decoracion" value="estrellas" data-nombre="Estrellas mágicas" data-precio="900">
-              <span>Estrellas mágicas</span>
-              <span class="costo">+ $900</span>
-            </label>
-          </div>
-        </fieldset>
-
-        <fieldset class="bloque">
-          <h3>4. Extras <small>puedes escoger varios</small></h3>
-          <div class="opciones">
-            <label class="opcion">
-              <input type="checkbox" name="extra" value="doble-chispas" data-nombre="Doble chispas" data-precio="700">
-              <span>Doble chispas</span>
-              <span class="costo">+ $700</span>
-            </label>
             <label class="opcion">
               <input type="checkbox" name="extra" value="regalo" data-nombre="Empaque de regalo" data-precio="1200">
               <span>Empaque de regalo</span>
@@ -193,7 +97,7 @@
         </fieldset>
 
         <div class="bloque">
-          <h3 id="titulo-cantidad">5. Cantidad</h3>
+          <h3 id="titulo-cantidad">4. Cantidad</h3>
           <div class="contador-caja">
             <button class="boton boton-chico" type="button" onclick="bajarCantidad()">-</button>
             <span id="cantidad">1</span>
@@ -205,7 +109,7 @@
       <aside class="vista-previa">
         <div class="caja">
 
-          <div class="vista-previa-dibujo" id="vista-previa"></div>
+          <div class="vista-previa-foto" id="vista-previa"></div>
 
           <p class="texto-suave texto-chico" id="resumen"></p>
 
@@ -273,6 +177,7 @@
   </footer>
 
   <script src="js/comun.js"></script>
+  <script src="js/datos.js"></script>
   <script src="js/galletas.js"></script>
   <script src="js/personalizacion.js"></script>
 </body>

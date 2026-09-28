@@ -357,6 +357,65 @@
   filter: drop-shadow(5px 7px 0 rgba(46, 29, 22, 0.15));
 }
 
+.opciones-foto .opcion-foto {
+  padding: 6px 14px 6px 6px;
+}
+
+.opcion-foto img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+.vista-previa-foto {
+  position: relative;
+  margin-bottom: 18px;
+  overflow: hidden;
+  border: 2px solid var(--borde);
+  border-radius: 20px;
+  background-color: var(--crema);
+}
+
+.vista-previa-galleta {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center 85%;
+}
+
+.vista-previa-topincs {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.vista-previa-topincs img {
+  width: 46px;
+  height: 46px;
+  border: 2px solid var(--papel);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center bottom;
+  box-shadow: var(--sombra-chica);
+}
+
+.franja-dibujo img {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  border-radius: 14px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center 85%;
+}
+
 .linea-carrito {
   display: grid;
   grid-template-columns: 80px 1fr auto;
@@ -376,6 +435,15 @@
 .linea-carrito-dibujo svg {
   width: 64px;
   height: 64px;
+}
+
+.linea-carrito-dibujo img {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+  object-fit: cover;
+  object-position: center bottom;
 }
 
 .linea-carrito h3 {

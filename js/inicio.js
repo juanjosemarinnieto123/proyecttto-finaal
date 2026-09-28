@@ -3,8 +3,9 @@
 // document.getElementById('galleta-2').innerHTML = dibujarGalleta('red-velvet', 'corazon', 'clasica');
 // document.getElementById('galleta-3').innerHTML = dibujarGalleta('vainilla-confeti', 'grageas', 'clasica');
 
+// En la franja de personalizacion va la foto de la galleta con fruta
 document.getElementById('galleta-ejemplo').innerHTML =
-  dibujarGalleta('doble-chocolate', 'glaseado', 'gigante');
+  '<img src="img/galleta-fresa-banano.jpg" alt="Galleta de Fresa y Banano personalizada">';
 
 let html = '';
 let cuantas = 0;

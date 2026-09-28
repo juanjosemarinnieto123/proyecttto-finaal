@@ -26,10 +26,10 @@ function mostrarResumen(carrito) {
       '</div>';
   }
 
-  if (totales.descuento > 0) {
+  if (totales.regalo === true) {
     html +=
-      '<div class="linea-recibo"><span>Docena mágica</span><span class="puntos"></span>' +
-      '<b>- ' + formatearPrecio(totales.descuento) + '</b></div>';
+      '<div class="linea-recibo"><span>&#127873; Galleta de regalo (4x5)</span><span class="puntos"></span>' +
+      '<b>Gratis</b></div>';
   }
 
   html += '<div class="total"><span>Total</span><span>' + formatearPrecio(totales.total) + '</span></div>';
@@ -168,6 +168,7 @@ function enviarPedido(evento) {
     momento: momentoEscogido(),
     pago: document.querySelector('input[name="pago"]:checked').dataset.nombre,
     galletas: carrito,
+    regalo: totales.regalo,
     total: totales.total,
   };
 
@@ -213,6 +214,10 @@ function textoWhatsApp(pedido) {
     texto = texto +
       '- ' + pedido.galletas[i].cantidad + ' x ' + pedido.galletas[i].nombre +
       ' (' + formatearPrecio(pedido.galletas[i].precio * pedido.galletas[i].cantidad) + ')\n';
+  }
+
+  if (pedido.regalo === true) {
+    texto = texto + '- 1 x Galleta de regalo por la promo 4x5 (Gratis)\n';
   }
 
   texto = texto + '\n*TOTAL: ' + formatearPrecio(pedido.total) + '*\n';

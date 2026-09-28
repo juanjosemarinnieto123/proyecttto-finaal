@@ -23,10 +23,21 @@ function mostrarCarrito() {
     for (let i = 0; i < carrito.length; i++) {
       const galleta = carrito[i];
 
+      let imagen = dibujarGalleta(galleta.sabor, galleta.decoracion, galleta.tamano);
+      if (galleta.foto) {
+        imagen = '<img src="' + escapar(galleta.foto) + '" alt="">';
+      }
+
+      // Los topincs no se pueden personalizar
+      let botonPersonalizar = '<button class="personalizar-linea" onclick="personalizar(' + i + ')">Personalizar</button>';
+      if (galleta.tipo === 'topinc') {
+        botonPersonalizar = '';
+      }
+
       html +=
         '<div class="linea-carrito">' +
         '<div class="linea-carrito-dibujo">' +
-        dibujarGalleta(galleta.sabor, galleta.decoracion, galleta.tamano) +
+        imagen +
         '</div>' +
         '<div>' +
         '<h3>' + escapar(galleta.nombre) + '</h3>' +
@@ -40,7 +51,7 @@ function mostrarCarrito() {
         '<button class="boton boton-chico" onclick="cambiar(' + i + ', 1)">+</button>' +
         '</div>' +
         '<span class="precio">' + formatearPrecio(galleta.precio * galleta.cantidad) + '</span>' +
-        '<button class="personalizar-linea" onclick="personalizar(' + i + ')">Personalizar</button>' +
+        botonPersonalizar +
         '<button class="quitar" onclick="quitar(' + i + ')">Quitar</button>' +
         '</div>' +
         '</div>';
@@ -53,23 +64,28 @@ function mostrarCarrito() {
     document.getElementById('cuantas').textContent = totales.cantidad + ' galletas';
   }
 
-  let descuento = '';
+  let regalo = '';
 
-  if (totales.descuento > 0) {
-    descuento =
-      '<div class="linea-recibo"><span>Docena mágica (-10%)</span><span class="puntos"></span>' +
-      '<b>- ' + formatearPrecio(totales.descuento) + '</b></div>';
+  if (totales.regalo === true) {
+    regalo =
+      '<div class="linea-recibo"><span>&#127873; Galleta de regalo (4x5)</span><span class="puntos"></span>' +
+      '<b>Gratis</b></div>';
   } else if (totales.cantidad > 0) {
-    descuento =
-      '<div class="linea-recibo"><span>Faltan ' + (GALLETAS_PARA_DESCUENTO - totales.cantidad) +
-      ' galletas para la docena mágica</span><span class="puntos"></span><b>-10%</b></div>';
+    const faltan = GALLETAS_PARA_REGALO - totales.soloGalletas;
+    let frase = 'Te faltan ' + faltan + ' galletas';
+    if (faltan === 1) {
+      frase = 'Te falta 1 galleta';
+    }
+    regalo =
+      '<div class="linea-recibo"><span>' + frase +
+      ' para la galleta de regalo</span><span class="puntos"></span><b>4x5</b></div>';
   }
 
   document.getElementById('resumen').innerHTML =
     '<h2>Resumen</h2>' +
     '<div class="linea-recibo"><span>' + totales.cantidad + ' galletas</span>' +
     '<span class="puntos"></span><b>' + formatearPrecio(totales.subtotal) + '</b></div>' +
-    descuento +
+    regalo +
     '<div class="total"><span>Total</span><span>' + formatearPrecio(totales.total) + '</span></div>';
 }
 
@@ -94,9 +110,9 @@ function personalizar(posicion) {
     clave: galleta.clave,
     nombre: galleta.nombre,
     maximo: galleta.cantidad,
-    sabor: galleta.sabor,
-    tamano: galleta.tamano,
-    decoracion: galleta.decoracion,
+    // Las lineas viejas no tienen "galleta", en ese caso la clave es el id del catalogo
+    galleta: galleta.galleta || galleta.clave,
+    topincs: galleta.topincs,
     extras: galleta.extras,
   });
 

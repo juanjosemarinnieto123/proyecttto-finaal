@@ -9,52 +9,121 @@ function opcionMarcada(nombreDelGrupo) {
   return document.querySelector('input[name="' + nombreDelGrupo + '"]:checked');
 }
 
-function calcularPrecio() {
-  const sabor = opcionMarcada('sabor');
-  const tamano = opcionMarcada('tamano');
-  const decoracion = opcionMarcada('decoracion');
-  const extras = document.querySelectorAll('input[name="extra"]:checked');
-
-  let precio = Number(sabor.dataset.precio) * Number(tamano.dataset.factor);
-  precio = precio + Number(decoracion.dataset.precio);
-
-  for (let i = 0; i < extras.length; i++) {
-    precio = precio + Number(extras[i].dataset.precio);
+function buscarProducto(id) {
+  for (let i = 0; i < GALLETAS.length; i++) {
+    if (GALLETAS[i].id === id) {
+      return GALLETAS[i];
+    }
   }
 
-  return Math.round(precio / 50) * 50;
+  return null;
 }
 
-function extrasMarcados() {
-  const extras = document.querySelectorAll('input[name="extra"]:checked');
+// Arma las opciones de galletas y topincs con lo que hay en el catalogo (datos.js),
+// asi si se agrega algo al catalogo aparece aqui solo.
+function crearOpciones() {
+  let galletas = '';
+  let topincs = '';
+
+  for (let i = 0; i < GALLETAS.length; i++) {
+    const producto = GALLETAS[i];
+
+    if (producto.tipo === 'topinc') {
+      topincs +=
+        '<label class="opcion opcion-foto">' +
+        '<input type="checkbox" name="topinc" value="' + producto.id + '">' +
+        '<img src="' + producto.foto + '" alt="">' +
+        '<span>' + producto.nombre + '</span>' +
+        '<span class="costo">+ ' + formatearPrecio(producto.precio) + '</span>' +
+        '</label>';
+    } else {
+      galletas +=
+        '<label class="opcion opcion-foto">' +
+        '<input type="radio" name="galleta" value="' + producto.id + '">' +
+        '<img src="' + producto.foto + '" alt="">' +
+        '<span>' + producto.nombre + '</span>' +
+        '<span class="costo">' + formatearPrecio(producto.precio) + '</span>' +
+        '</label>';
+    }
+  }
+
+  document.getElementById('opciones-galleta').innerHTML = galletas;
+  document.getElementById('opciones-topinc').innerHTML = topincs;
+
+  // La primera galleta queda escogida para que siempre haya una
+  document.querySelector('input[name="galleta"]').checked = true;
+}
+
+function marcados(nombreDelGrupo) {
+  const casillas = document.querySelectorAll('input[name="' + nombreDelGrupo + '"]:checked');
   const lista = [];
 
-  for (let i = 0; i < extras.length; i++) {
-    lista.push(extras[i].value);
+  for (let i = 0; i < casillas.length; i++) {
+    lista.push(casillas[i].value);
   }
 
   return lista;
 }
 
-function actualizar() {
-  const sabor = opcionMarcada('sabor');
-  const tamano = opcionMarcada('tamano');
-  const decoracion = opcionMarcada('decoracion');
-
+function calcularPrecio() {
+  const galleta = buscarProducto(opcionMarcada('galleta').value);
+  const topincs = marcados('topinc');
   const extras = document.querySelectorAll('input[name="extra"]:checked');
-  let nombresExtras = '';
 
-  for (let i = 0; i < extras.length; i++) {
-    nombresExtras = nombresExtras + ' · ' + extras[i].dataset.nombre;
+  let precio = galleta.precio;
+
+  for (let i = 0; i < topincs.length; i++) {
+    precio = precio + buscarProducto(topincs[i]).precio;
   }
 
+  for (let i = 0; i < extras.length; i++) {
+    precio = precio + Number(extras[i].dataset.precio);
+  }
+
+  return precio;
+}
+
+// Texto corto con lo que se escogio, ej: "Doble Chocolate · Topincs: Fresa, Cereal · Empaque de regalo"
+function textoResumen() {
+  const galleta = buscarProducto(opcionMarcada('galleta').value);
+  const topincs = marcados('topinc');
+  const extras = document.querySelectorAll('input[name="extra"]:checked');
+
+  let texto = galleta.nombre;
+
+  if (topincs.length > 0) {
+    const nombres = [];
+    for (let i = 0; i < topincs.length; i++) {
+      nombres.push(buscarProducto(topincs[i]).nombre);
+    }
+    texto = texto + ' · Topincs: ' + nombres.join(', ');
+  } else {
+    texto = texto + ' · Sin topincs extra';
+  }
+
+  for (let i = 0; i < extras.length; i++) {
+    texto = texto + ' · ' + extras[i].dataset.nombre;
+  }
+
+  return texto;
+}
+
+function actualizar() {
+  const galleta = buscarProducto(opcionMarcada('galleta').value);
+  const topincs = marcados('topinc');
   const precio = calcularPrecio();
 
-  document.getElementById('vista-previa').innerHTML =
-    dibujarGalleta(sabor.value, decoracion.value, tamano.value);
+  let fotosTopincs = '';
+  for (let i = 0; i < topincs.length; i++) {
+    const topinc = buscarProducto(topincs[i]);
+    fotosTopincs += '<img src="' + topinc.foto + '" alt="' + topinc.nombre + '" title="' + topinc.nombre + '">';
+  }
 
-  document.getElementById('resumen').textContent =
-    sabor.dataset.nombre + ' · ' + tamano.dataset.nombre + ' · ' + decoracion.dataset.nombre + nombresExtras;
+  document.getElementById('vista-previa').innerHTML =
+    '<img class="vista-previa-galleta" src="' + galleta.foto + '" alt="Galleta ' + galleta.nombre + '">' +
+    '<div class="vista-previa-topincs">' + fotosTopincs + '</div>';
+
+  document.getElementById('resumen').textContent = textoResumen();
 
   document.getElementById('precio-unidad').textContent = formatearPrecio(precio);
   document.getElementById('precio-total').textContent = formatearPrecio(precio * cantidad);
@@ -71,7 +140,7 @@ function mostrarCartelEdicion() {
 
   if (edicion === null) {
     caja.classList.add('oculto');
-    titulo.textContent = '5. Cantidad';
+    titulo.textContent = '4. Cantidad';
     boton.textContent = 'Agregar al carrito';
     return;
   }
@@ -89,7 +158,7 @@ function mostrarCartelEdicion() {
     'Estás personalizando <b>' + cantidad + ' de ' + edicion.maximo + '</b> · ' +
     escapar(edicion.nombre) + '. ' + resto;
 
-  titulo.textContent = '5. ¿Cuántas quieres personalizar? (tienes ' + edicion.maximo + ')';
+  titulo.textContent = '4. ¿Cuántas quieres personalizar? (tienes ' + edicion.maximo + ')';
   boton.textContent = 'Guardar y volver al carrito';
   caja.classList.remove('oculto');
 }
@@ -111,22 +180,27 @@ function bajarCantidad() {
 }
 
 function agregarPersonalizada() {
-  const sabor = opcionMarcada('sabor');
-  const tamano = opcionMarcada('tamano');
-  const decoracion = opcionMarcada('decoracion');
+  const galleta = buscarProducto(opcionMarcada('galleta').value);
+  const topincs = marcados('topinc');
+  const extras = marcados('extra');
 
-  const precio = calcularPrecio();
-  const detalle = document.getElementById('resumen').textContent;
+  let nombre = galleta.nombre;
+  if (topincs.length > 0 || extras.length > 0) {
+    nombre = galleta.nombre + ' personalizada';
+  }
 
   const galletaNueva = {
-    clave: sabor.value + '-' + tamano.value + '-' + decoracion.value + '-' + detalle,
-    nombre: 'Galleta ' + sabor.dataset.nombre,
-    detalle: detalle,
-    sabor: sabor.value,
-    decoracion: decoracion.value,
-    tamano: tamano.value,
-    extras: extrasMarcados(),
-    precio: precio,
+    clave: 'p-' + galleta.id + '-' + topincs.join('-') + '-' + extras.join('-'),
+    nombre: nombre,
+    detalle: textoResumen(),
+    galleta: galleta.id,
+    foto: galleta.foto,
+    sabor: galleta.sabor,
+    decoracion: galleta.decoracion,
+    tamano: 'clasica',
+    topincs: topincs,
+    extras: extras,
+    precio: calcularPrecio(),
     cantidad: cantidad,
   };
 
@@ -161,9 +235,9 @@ function marcarOpcion(grupo, valor) {
   }
 }
 
-function marcarExtras(extras) {
-  const casillas = document.querySelectorAll('input[name="extra"]');
-  let lista = extras;
+function marcarCasillas(grupo, valores) {
+  const casillas = document.querySelectorAll('input[name="' + grupo + '"]');
+  let lista = valores;
 
   if (Array.isArray(lista) === false) {
     lista = [];
@@ -201,30 +275,27 @@ function prepararEdicion() {
   maximo = enCarrito.cantidad;
   cantidad = 1;
 
-  marcarOpcion('sabor', pendiente.sabor);
-  marcarOpcion('tamano', pendiente.tamano);
-  marcarOpcion('decoracion', pendiente.decoracion);
-  marcarExtras(pendiente.extras);
+  marcarOpcion('galleta', pendiente.galleta);
+  marcarCasillas('topinc', pendiente.topincs);
+  marcarCasillas('extra', pendiente.extras);
 }
 
-function saborDeLaDireccion() {
+// Si venimos del catalogo con ?galleta=... dejamos esa galleta escogida
+function galletaDeLaDireccion() {
   const direccion = window.location.search;
 
-  if (direccion.indexOf('sabor=') !== -1) {
-    const sabor = direccion.split('sabor=')[1].replace(/[^a-z-]/g, '');
-    const opcion = document.querySelector('input[name="sabor"][value="' + sabor + '"]');
-
-    if (opcion !== null) {
-      opcion.checked = true;
-    }
+  if (direccion.indexOf('galleta=') !== -1) {
+    marcarOpcion('galleta', direccion.split('galleta=')[1]);
   }
 }
+
+crearOpciones();
 
 const opciones = document.querySelectorAll('#formulario-galleta input');
 for (let i = 0; i < opciones.length; i++) {
   opciones[i].addEventListener('change', actualizar);
 }
 
+galletaDeLaDireccion();
 prepararEdicion();
-saborDeLaDireccion();
 actualizar();
